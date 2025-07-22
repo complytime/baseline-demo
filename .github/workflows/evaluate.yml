@@ -26,6 +26,8 @@ jobs:
 
       - name: Setup c2pcli
         uses: jpower432/c2p-actions/actions/setup-c2pcli@HEAD
+        with:
+          c2p-version: 'v2.0.0-alpha.1'
 
       - name: Install C2P plugins
         uses: ./.github/actions/install-opa-plugin
