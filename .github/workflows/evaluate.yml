@@ -25,7 +25,7 @@ jobs:
           persist-credentials: false
 
       - name: Setup c2pcli
-        uses: jpower432/c2p-actions/actions/setup-c2pcli@HEAD
+        uses: jpower432/compliance-to-policy-go/actions/setup-c2pcli@HEAD
 
       - name: Install C2P plugins
         uses: ./.github/actions/install-opa-plugin
