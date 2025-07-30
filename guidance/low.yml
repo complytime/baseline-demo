@@ -1,0 +1,40 @@
+id: FRMR-KSI
+  title: Key Security Indicators
+  description: ''
+  author: ''
+  version: ''
+  publication-date: '2025-07-30'
+  last-modified: '2025-07-30 15:00:00'
+  document-type: Framework
+  mapping-references:
+    - id: NIST_800_53
+      title: NIST 800-53 Special Publication
+      version: rev5
+      url: ""
+  resources:
+    - id: example
+      title: ''
+      description: ''
+      url: ''
+      issuing-body: ''
+      publication-date: ''
+categories:
+- id: CMT
+  title: Change Management
+  description: A secure cloud service provider will ensure that all system changes are properly documented and configuration baselines are updated accordingly.
+  guidelines:
+    - id: KSI-CMT-04
+      title: ''
+      objective: Have a documented change management procedure
+      recommendations:
+        - Example
+      guideline-mappings:
+        - reference-id: NIST_800_53
+          identifiers:
+          - cm-3
+          - cm-3.4
+          - cm-5
+          - cm-7.1
+          - cm-9
+      external-references:
+        - example
