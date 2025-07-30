@@ -1,4 +1,5 @@
-id: FRMR-KSI
+metadata:
+  id: FRMR-KSI
   title: Key Security Indicators
   description: ''
   author: ''
@@ -8,14 +9,14 @@ id: FRMR-KSI
   document-type: Framework
   mapping-references:
     - id: NIST_800_53
-      title: NIST 800-53 Special Publication
-      version: rev5
-      url: ""
+      title: Electronic Version of NIST SP 800-53 Rev 5.1.1 Controls and SP 800-53A Rev 5.1.1 Assessment Procedures
+      version: '5.1.1+u4'
+      url: https://raw.githubusercontent.com/usnistgov/oscal-content/refs/heads/main/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json
   resources:
     - id: example
       title: ''
       description: ''
-      url: ''
+      url: 'https://github.com/FedRAMP/docs/blob/main/FRMR.KSI.key-security-indicators.json'
       issuing-body: ''
       publication-date: ''
 categories:
