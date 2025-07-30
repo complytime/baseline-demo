@@ -1,0 +1,27 @@
+id: ''
+  title: ''
+  description: ''
+  author: ''
+  version: ''
+  publication-date: '2025-07-30'
+  last-modified: '2025-07-30 15:00:00'
+  document-type: Framework
+  resources:
+    - id: example
+      title: ''
+      description: ''
+      url: ''
+      issuing-body: ''
+      publication-date: ''
+categories:
+- id: ''
+  title: ''
+  description: ''
+  guidelines:
+    - id: ''
+      title: ''
+      objective: ''
+      recommendations:
+        - ''
+      external-references:
+        - example
