@@ -40,4 +40,4 @@ runs:
           validate input
           --policy "policy.yaml"
           --file input.json
-          --output json=policy-results/opa/github-branch-protection.json
+          --output json=policy-results/opa/github_branch_protection.json
