@@ -1,30 +1,11 @@
-metadata:
-  id: "my-org-policy"
-  title: "Example Security Policy"
-  objective: "To ensure all GitHub projects are configured correctly."
-  version: "1.0.0"
-  contacts:
-    author:
-      name: "Jenn Power"
-      primary: true
-  last-modified: "2025-07-28T18:00:00Z"
-scope:
-  technologies:
-    - "github-repo"
-  providers:
-    - "github"
-guidance-references:
-  - reference-id: "NIST-SP-800-161r1-custom"
-    in-scope:
-      technologies:
-        - "github-repo"
-control-references:
-  - reference-id: "OSPS-B"
-    in-scope:
-      technologies:
-        - "github-repo"
-    parameter-modifications:
-      - target-id: "main_branch_min_approvals"
-        modification-type: "loosening"
-        modification-rationale: "This repository is solo-maintained"
-        value: 0
+description: Policy Created by C2P
+name: C2P Policy
+sources:
+- config:
+    include:
+    - github_branch_protection
+  name: OSPS-QA-07.01
+  policy:
+  - oci::ghcr.io/jpower432/opa-bundle:dev
+  ruleData:
+    main_branch_min_approvals: "1"

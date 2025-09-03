@@ -1,0 +1,30 @@
+metadata:
+  id: "my-org-policy"
+  title: "Example Security Policy"
+  objective: "To ensure all GitHub projects are configured correctly."
+  version: "1.0.0"
+  contacts:
+    author:
+      name: "Jenn Power"
+      primary: true
+  last-modified: "2025-07-28T18:00:00Z"
+scope:
+  technologies:
+    - "github-repo"
+  providers:
+    - "github"
+guidance-references:
+  - reference-id: "SSDF"
+    in-scope:
+      technologies:
+        - "github-repo"
+control-references:
+  - reference-id: "OSPS-B"
+    in-scope:
+      technologies:
+        - "github-repo"
+    parameter-modifications:
+      - target-id: "main_branch_min_approvals"
+        modification-type: "increase-strictness"
+        modification-rationale: "My organization require two approvals from non-author contributors"
+        value: 2
