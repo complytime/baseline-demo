@@ -42,14 +42,14 @@ deny contains result if {
 #   - osps
 deny contains result if {
     # Check if the overall rules array exists
-    not input.values.rules
+    not input.values
     result := lib.result_helper(rego.metadata.chain(), [])
 }
 
 # Helper rule to check if a pull_request rule meets the minimum approval requirement
 _pull_request_rule_meets_min_approvals if {
     some i
-    rule = input.values.rules[i]
+    rule = input.values[i]
     rule.type == "pull_request"
     required_count := data.rule_data__configuration__main_branch_min_approvals
     rule.parameters.required_approving_review_count >= required_count
