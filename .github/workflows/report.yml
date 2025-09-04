@@ -44,7 +44,7 @@ jobs:
 
       - uses: ./.github/actions/run-checks
 
-      - name: Create an Assessment Plan
+      - name: Create Component Definition
         run: |
           go build -C cmd/  -o ../gemara-transformer
           ./gemara-transformer component -t "GitHub Repository" -v "conforma" > "${COMPDEF}"
@@ -61,6 +61,7 @@ jobs:
         with:
           name: component-definition
           path: ${{ env.COMPDEF }}
+          retention-days: 5
 
       # Post summary on GitHub action summary
       - name: Summary
