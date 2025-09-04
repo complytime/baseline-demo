@@ -1,6 +1,6 @@
 # baseline-demo
 
-This repository provides a demonstration on how to use the compliance-to-policy project to automate evidence generation and collection to
+This repository provides a demonstration on how to use the `compliance-to-policy` project to automate evidence generation and collection to
 demonstrate adherence to the [OSPS Baseline](https://baseline.openssf.org/versions/2025-02-25) controls
 
 # Overview
@@ -11,8 +11,7 @@ The goal is to provide consistency for reporting and evidence traceability while
 
 # Demo
 
-To demonstrate the evaluation and reporting of a single component, in this case a GitHub Repository, 
-
+To goal of this repository demonstrate the evaluation and reporting of a single component, in this case a GitHub Repository. 
 
 The "Generate" workflow can be run which will complete the following steps:
 

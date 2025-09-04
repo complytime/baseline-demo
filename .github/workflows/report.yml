@@ -65,4 +65,6 @@ jobs:
 
       # Post summary on GitHub action summary
       - name: Summary
-        run: c2pcli oscal2posture -c configs/c2p-config.yaml -r assessment-results.json -d "${COMPDEF}" -n "${FRAMEWORK}" --catalog data/catalogs/catalog.json >> $GITHUB_STEP_SUMMARY
+        run: |
+          wget https://raw.githubusercontent.com/usnistgov/oscal-content/refs/heads/main/nist.gov/SP800-218/ver1/json/NIST_SP800-218_ver1_catalog.json -O catalog.json
+          c2pcli oscal2posture -c configs/c2p-config.yaml -r assessment-results.json -d "${COMPDEF}" -n "${FRAMEWORK}" --catalog catalog.json >> $GITHUB_STEP_SUMMARY
