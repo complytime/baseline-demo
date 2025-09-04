@@ -59,8 +59,8 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: assessment-plan
-          path: ${{ env.ASSESSMENTPLAN }}
+          name: component-definition
+          path: ${{ env.COMPDEF }}
 
       # Post summary on GitHub action summary
       - name: Summary
