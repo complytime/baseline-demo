@@ -6,6 +6,8 @@ sources:
     - github_branch_protection
   name: OSPS-QA-07.01
   policy:
-  - oci::ghcr.io/jpower432/opa-bundle:dev
+    - github.com/conforma/policy//policy/lib
+    - oci::ghcr.io/jpower432/opa-bundle:dev
+  data: []
   ruleData:
     main_branch_min_approvals: "1"
