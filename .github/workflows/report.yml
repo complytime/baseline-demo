@@ -9,7 +9,7 @@ on:
 permissions: {}
 
 env:
-  ASSESSMENTPLAN: "assessment-plan-${{ github.run_id }}.json"
+  COMPDEF: "component-definition-${{ github.run_id }}.json"
   FRAMEWORK: "SSDF"
 
 jobs:
@@ -47,7 +47,7 @@ jobs:
       - name: Create an Assessment Plan
         run: |
           go build -C cmd/  -o ../gemara-transformer
-          ./gemara-transformer plan -t "GitHub Repository" -v "conforma" -r "${FRAMEWORK}" > "${ASSESSMENTPLAN}"
+          ./gemara-transformer component -t "GitHub Repository" -v "conforma" > "${COMPDEF}"
 
       - name: Add GitHub ORG to config
         env:
@@ -55,7 +55,7 @@ jobs:
         run: sed -i "s/{{ ORG }}/$ORG/g" configs/c2p-config.yaml
 
       - name: Aggregate results
-        run: c2pcli result2oscal -c configs/c2p-config.yaml -a "${ASSESSMENTPLAN}" -p $(go env GOPATH)/bin
+        run: c2pcli result2oscal -c configs/c2p-config.yaml  -d "${COMPDEF}" -n "${FRAMEWORK}" -p $(go env GOPATH)/bin
 
       - uses: actions/upload-artifact@v4
         with:
@@ -64,4 +64,4 @@ jobs:
 
       # Post summary on GitHub action summary
       - name: Summary
-        run: c2pcli oscal2posture -c configs/c2p-config.yaml -r assessment-results.json -a "${ASSESSMENTPLAN}" --catalog data/catalogs/catalog.json >> $GITHUB_STEP_SUMMARY
+        run: c2pcli oscal2posture -c configs/c2p-config.yaml -r assessment-results.json -d "${COMPDEF}" -n "${FRAMEWORK}" --catalog data/catalogs/catalog.json >> $GITHUB_STEP_SUMMARY
