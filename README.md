@@ -11,20 +11,26 @@ The goal is to provide consistency for reporting and evidence traceability while
 
 # Demo
 
-To goal of this repository demonstrate the evaluation and reporting of a single component, in this case a GitHub Repository. 
+To goal of this repository is to demonstrate the evaluation and reporting of a single component, in this case a GitHub Repository. 
 
-The "Generate" workflow can be run which will complete the following steps:
+The `Generate` workflow can be run which will complete the following steps:
 
 1. Transform the Gemara Layers 2, 3, and 4 artifacts into an OSCAL Component Definitions with OSCAL Compass property extensions
-2. Provide the OSCAL Component Definition as inputs in the c2pcli with a Conforma plugin to provide an OPA bundle that contain all the policies required for evaluation and a `policy.yaml` to allow
+2. Provide the OSCAL Component Definition as inputs in the c2pcli with a [Conforma](https://github.com/conforma) plugin to provide an OPA bundle that contain all the policies required for evaluation and a `policy.yaml` to allow
 data input mapping to policies.
 3. The policy bundle is pushed as an OCI artifact to `ghcr.io`
 
-The "Report" workflow and be used to provide immediate feedback on the compliance posture of the component. It completes the following steps:
+The `Report` workflow and be used to provide immediate feedback on the compliance posture of the component. It completes the following steps:
 
 1. Use `snappy` to retrieve input data from the API and use `ec validate input` to evaluate the input data using the policy in the bundle.
 2. Use the policy results, the OSCAL Component Definition and input OSCAL Catalog to produce an OSCAL Assessment Results and Markdown report.
 3. The Markdown report is available in the job run as a step summary.
 
 > Note: This report demonstration currently does not account for long-term storage of evidence, but provides short-term access to evidence all co-located and links on the GitHub job.
+
+# Repository Layout
+
+`src` - Contains `gemara` authored content used for transformation  
+`policy.yaml` - The `conforma` policy configuration file used perform evaluations   
+`policy-templates` - Contains Rego policies publish for use with `conforma`  
 
