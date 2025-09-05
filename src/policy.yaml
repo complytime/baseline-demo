@@ -26,5 +26,5 @@ control-references:
     parameter-modifications:
       - target-id: "main_branch_min_approvals"
         modification-type: "increase-strictness"
-        modification-rationale: "My organization require two approvals from non-author contributors"
+        modification-rationale: "My organization requires two approvals from non-author contributors"
         value: 2
