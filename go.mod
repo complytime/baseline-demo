@@ -7,7 +7,7 @@ require (
 	github.com/defenseunicorns/go-oscal v0.6.3
 	github.com/goccy/go-yaml v1.18.0
 	github.com/oscal-compass/oscal-sdk-go v0.0.5
-	github.com/spf13/cobra v1.9.1
+	github.com/spf13/cobra v1.10.1
 )
 
 require (
@@ -20,7 +20,7 @@ require (
 require (
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/ossf/gemara v0.5.0
-	github.com/spf13/pflag v1.0.7 // indirect
+	github.com/spf13/pflag v1.0.9 // indirect
 )
 
 // Points to experiments/oscal-transformation branch (temporarily)
