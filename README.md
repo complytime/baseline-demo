@@ -32,5 +32,9 @@ The `Report` workflow and be used to provide immediate feedback on the complianc
 
 `src` - Contains `gemara` authored content used for transformation  
 `policy.yaml` - The `conforma` policy configuration file used to perform evaluations   
-`policy-templates` - Contains Rego policies published for use with `conforma`  
+`policy-templates` - Contains Rego policies published for use with `conforma`
+
+# Contributing
+
+This project accepts external contributions. For guidance on the project and how to contribute see [`CONTRIBUTING.md`](./CONTRIBUTING.md).
 

@@ -34,13 +34,9 @@ jobs:
 
       - name: Setup c2pcli
         uses: jpower432/c2p-actions/actions/setup-c2pcli@0bc42f492f3a6854fe0afc99c50100db8f5e17c6 # main
-        with:
-          c2p-version: 'main'
 
       - name: Install C2P plugins
         uses: ./.github/actions/install-conforma-plugin
-        with:
-          version: 'conforma-update'
 
       - uses: ./.github/actions/run-checks
 
