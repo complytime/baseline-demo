@@ -34,6 +34,7 @@ runs:
     - name: Get Docker config path
       id: docker_config
       run: echo "::set-output name=path::${HOME}/.docker/config.json"
+      shell: bash
 
     - name: Run EC Validate
       shell: bash
