@@ -32,6 +32,7 @@ runs:
         password: ${{ github.token }}
 
     - name: Install EC
+      shell: bash
       run: |
         curl -sLO https://github.com/conforma/cli/releases/download/snapshot/ec_linux_amd64
         chmod +x ec_linux_amd64
