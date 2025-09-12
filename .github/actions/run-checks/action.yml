@@ -31,13 +31,16 @@ runs:
         username: ${{ github.actor }}
         password: ${{ github.token }}
 
+    - name: Install EC
+      shell: bash
+      run: |
+        curl -sLO https://github.com/conforma/cli/releases/download/snapshot/ec_linux_amd64
+        chmod +x ec_linux_amd64
+        
     - name: Run EC Validate
-      uses: docker://quay.io/conforma/cli:snapshot@sha256:1c4ffca9efd28ff7cecff23787c78c9a11ff513c5c0d6ff1cd78502e0a64ea28
       id: ec_validate
       continue-on-error: true
-      with:
-        args: >
-          validate input
-          --policy "policy.yaml"
-          --file input.json
-          --output json=policy-results/opa/github_branch_protection.json
+      shell: bash
+      run: |
+        ./ec_linux_amd64 validate input --policy "policy.yaml" --file input.json --output json=policy-results/opa/github_branch_protection.json
+  
