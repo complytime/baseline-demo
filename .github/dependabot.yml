@@ -3,7 +3,10 @@
 version: 2
 updates:
   - package-ecosystem: "github-actions"
-    directory: "/"
+    directories:
+      - "/"
+      - "/.github/actions/install-conforma-plugin"
+      - "/.github/actions/run-checks"
     schedule:
       interval: "daily"
     commit-message:
