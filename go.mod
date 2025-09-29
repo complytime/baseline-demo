@@ -6,7 +6,7 @@ require (
 	github.com/complytime/gemara2oscal v0.0.0-20250828130252-25e4d88e3ff9
 	github.com/defenseunicorns/go-oscal v0.6.3
 	github.com/goccy/go-yaml v1.18.0
-	github.com/oscal-compass/oscal-sdk-go v0.0.5
+	github.com/oscal-compass/oscal-sdk-go v0.0.8
 	github.com/spf13/cobra v1.10.1
 )
 
