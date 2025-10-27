@@ -1,27 +1,1078 @@
+# Gemara Layer 4 Schema Compliant OSPS Configuration
 metadata:
-  id: OSPS-B-Plan
-  version: 0.1.0
+  id: "example-osps-evaluation-plan"
+  version: "0.1.0"
   author:
-    name: conforma
-    uri: https://github.com/conforma/cli
+    name: "conforma"
+    uri: "https://github.com/conforma/cli"
+    contact:
+      name: "Hannah Braswell"
+      primary: true
+      email: "demo@example.com"
   mapping-references:
     - id: OSPS-B
       title: Open Source Project Security Baseline
       version: "2025-02-25"
       url: https://baseline.openssf.org/versions/2025-02-25.html
       description: |
-        The Open Source Project Security (OSPS) Baseline is a set of security criteria that projects 
-        should meet to demonstrate a strong security posture. The controls are organized by maturity level 
-        and category. In the detailed subsections you will find the control, rationale, and details notes.
-
+        The Open Source Project Security (OSPS) Baseline is a set of security
+        criteria that projects should meet to demonstrate a strong security posture.
+        This baseline is based on the NIST SP 800-218 and the OpenSSF Best Practices
+        Badge Program. The controls are organized by maturity level and category. In
+        the detailed subsections you will find the control, rationale, and notes.
 plans:
-  - control:
-      reference-id: OSPS=B
-      entry-id: OSPS-QA-07
-    assessments:
-      - requirement:
-          entry-id: OSPS-QA-07.01
-        procedures:
-          - id: "github_branch_protection"
-            name: "GitHub API Verifications for Branch Protection"
-            description: The procedure performs an automated check of the branch ruleset state in GitHub by creating a snapshot of the state from the API and checks the output with an OPA policy to ensure the outcome meets the baseline requirement.
+- control:
+    reference-id: "OSPS-AC-01"
+    entry-id: "OSPS-AC-01"
+    strength: 8
+    remarks: "Security Assessment for Required Multi-factor Authentication"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-AC-01"
+        entry-id: "OSPS-AC-01.01"
+        strength: 8
+        remarks: "Multi-factor Authentication Requirement"
+      procedures:
+        - id: "mfa_validation"
+          name: "Required Multi-factor Authentication for Administrative Access"
+          description: |
+            The procedure performs an automated check of the administrative
+            access state in GitHub by creating a snapshot of the state from the
+            API and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication"
+- control:
+    reference-id: "OSPS-AC-02"
+    entry-id: "OSPS-AC-02"
+    strength: 8
+    remarks: "Security Assessment for Rule of Least Privilege"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-AC-02"
+        entry-id: "OSPS-AC-02.01"
+        strength: 8
+        remarks: "Rule of Least Privilege Requirement for Contributors"
+      procedures:
+        - id: "least_privilege_validation"
+          name: "Least Privilege Validation for New Contributors"
+          description: |
+            The procedure performs an automated check of the administrative
+            access state in GitHub by creating a snapshot of the state from the
+            API and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement. The CODEOWNERS file is used for
+            evaluation of roles and permissions.
+          documentation: "https://docs.github.com/en/actions/reference/security/secure-use#using-codeowners-to-monitor-changes"
+- control:
+    reference-id: "OSPS-AC-03"
+    entry-id: "OSPS-AC-03"
+    strength: 8
+    remarks: "Security Assessment for Primary Branch Protection"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-AC-03"
+        entry-id: "OSPS-AC-03.01"
+        strength: 8
+        remarks: "Primary Branch Protection Requirements"
+      procedures:
+        - id: "pull_request_protection_validation"
+          name: "Pull Request Protection Validation for Primary Branch"
+          description: |
+            The procedure performs an automated check of the push access to
+            the primary branch in GitHub by creating a snapshot of the state 
+            from the API and checks the output with an OPA policy to ensure 
+            the outcome meets the baseline requirement.
+          documentation: "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests"
+    - requirement:
+        reference-id: "OSPS-AC-03"
+        entry-id: "OSPS-AC-03.02"
+        strength: 8
+        remarks: "Primary Branch Deletion Protection Requirement"
+      procedures:
+        - id: "primary_branch_deletion_protection_validation"
+          name: "Primary Branch Deletion Protection Validation"
+          description: |
+            The procedure performs an automated check of the push access to
+            the primary branch in GitHub by creating a snapshot of the state 
+            from the API and checks the output with an OPA policy to ensure 
+            the outcome meets the baseline requirement.
+          documentation: "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests"
+- control:
+    reference-id: "OSPS-AC-04"
+    entry-id: "OSPS-AC-04"
+    strength: 8
+    remarks: "Security Assessment for CI/CD Pipeline Permissions"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-AC-04"
+        entry-id: "OSPS-AC-04.01"
+        strength: 8
+        remarks: "Required CI/CD Pipeline Permissions Limited"
+      procedures:
+        - id: "ci_cd_pipeline_permissions_validation"
+          name: "Default CI/CD Pipeline Least Privilege Permissions Validation"
+          description: |
+            The procedure performs an automated check of the CI/CD step
+            procedures in GitHub by creating a snapshot of the state 
+            from the API and checks the output with an OPA policy to ensure 
+            the outcome meets the baseline requirement.
+          documentation: "https://docs.github.com/en/enterprise-cloud@latest/enterprise-onboarding/github-actions-for-your-enterprise/getting-started-with-github-actions-for-github-enterprise-cloud"
+    - requirement:
+        reference-id: "OSPS-AC-04"
+        entry-id: "OSPS-AC-04.02"
+        strength: 8
+        remarks: "CI/CD Pipeline Permissions Enforced for Lowest Privilege"
+      procedures:
+        - id: "ci_cd_least_privilege_validation"
+          name: "CI/CD Pipeline Least Privilege Permissions Validation"
+          description: |
+            The procedure performs an automated check of the push access from
+            the configured CI/CD pipeline in GitHub by creating a snapshot of 
+            the state from the API and checks the output with an OPA policy to 
+            ensure the outcome meets the baseline requirement. Validating the
+            principle of least privilege for the CI/CD pipeline permissions.
+          documentation: "https://docs.github.com/en/enterprise-cloud@latest/enterprise-onboarding/github-actions-for-your-enterprise/getting-started-with-github-actions-for-github-enterprise-cloud"
+- control:
+    reference-id: "OSPS-BR-01"
+    entry-id: "OSPS-BR-01"
+    strength: 8
+    remarks: "Security Assessment for Build and Release Pipelines"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-BR-01"
+        entry-id: "OSPS-BR-01.01"
+        strength: 8
+        remarks: "Build and Release Pipeline Access Security Requirement"
+      procedures:
+        - id: "build_release_pipeline_security_validation"
+          name: "Build and Release Pipeline Security Validation"
+          description: |
+            The procedure performs an automated check of the build and release
+            procedures in GitHub by creating a snapshot of the state from the
+            API and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication"
+    - requirement:
+        reference-id: "OSPS-BR-01"
+        entry-id: "OSPS-BR-01.02"
+        strength: 8
+        remarks: "Build and Release Pipeline Branch Sanitation Security Requirement"
+      procedures:
+        - id: "build_release_branch_semantics_validation"
+          name: "Build and Release Pipeline Branching Semantic Conventions Validation"
+          description: |
+            The procedure performs an automated check of the build and release
+            branches for a pipeline in GitHub by creating a snapshot of the state
+            from the API and checks the output with an OPA policy to ensure the 
+            outcome meets the baseline requirement.
+          documentation: "https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication"
+- control:
+    reference-id: "OSPS-BR-02"
+    entry-id: "OSPS-BR-02"
+    strength: 8
+    remarks: "Security Assessment for Asset Version Management"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-BR-02"
+        entry-id: "OSPS-BR-02.01"
+        strength: 8
+        remarks: "Security Assessment for Release Identifier Management"
+      procedures:
+        - id: "git_semantic_versioning_validation"
+          name: "Release Identifier Management Validation in GitHub Actions"
+          description: |
+            The procedure performs an automated check of the semantic version
+            associated with commits and releases in GitHub by creating a
+            snapshot of the state from the API and checks the output with an
+            OPA policy to ensure the outcome meets the baseline requirement.
+          documentation: "https://github.com/marketplace/actions/git-semantic-version"
+    - requirement:
+        reference-id: "OSPS-BR-02"
+        entry-id: "OSPS-BR-02.02"
+        strength: 8
+        remarks: "Security Assessment for Asset Defined Versioning Scheme"
+      procedures:
+        - id: "git_semantic_versioning_across_assets_validation"
+          name: "Asset Versioning Scheme Validation in GitHub Actions"
+          description: |
+            The procedure performs an automated check of the semantic version
+            associated with assets within releases in GitHub by creating a
+            snapshot of the state from the API and checks the output with an
+            OPA policy to ensure the outcome meets the baseline requirement.
+          documentation: "https://github.com/marketplace/actions/git-semantic-version"
+- control:
+    reference-id: "OSPS-BR-03"
+    entry-id: "OSPS-BR-03"
+    strength: 8
+    remarks: "Security Assessment for Encryption of URIs"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-BR-03"
+        entry-id: "OSPS-BR-03.01"
+        strength: 8
+        remarks: "Encryption of URIs Requirement"
+      procedures:
+        - id: "git_ssh_protocol_validation"
+          name: "SSH and HTTPS Protocols Validation for Git Operations"
+          description: |
+            The procedure performs an automated check of the Git operations
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement. The procedure also checks for
+            signing commits and tags in the Git operations. The procedure
+            also leverages te GitHub App installation for API requests in 
+            CI/CD pipeline authentication.
+          documentation: "https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-as-a-github-app-installation"
+    - requirement:
+        reference-id: "OSPS-BR-03"
+        entry-id: "OSPS-BR-03.02"
+        strength: 8
+        remarks: "Encryption of URIs Requirement"
+      procedures:
+        - id: "git_release_encryption_validation"
+          name: "SSH and HTTPS Protocols Validation for Release Pipelines"
+          description: |
+            The procedure performs an automated check of the Git operations
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement. The procedure also checks for
+            signing commits and tags in the Git operations. The procedure
+            also leverages te GitHub App installation for API requests in 
+            CI/CD pipeline authentication.
+          documentation: "https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-as-a-github-app-installation"
+- control:
+    reference-id: "OSPS-BR-04"
+    entry-id: "OSPS-BR-04"
+    strength: 8
+    remarks: "Security Assessment for Release Decisions"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-BR-04"
+        entry-id: "OSPS-BR-04.01"
+        strength: 8
+        remarks: "Release CHANGELOG Security Requirement Enforced"
+      procedures:
+        - id: "release_please_changelog_validation"
+          name: "Release Please CHANGELOG Validation"
+          description: |
+            The procedure performs an automated check of the release CHANGELOG
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://github.com/marketplace/actions/release-please-action"
+- control:
+    reference-id: "OSPS-BR-05"
+    entry-id: "OSPS-BR-05"
+    strength: 8
+    remarks: "Security Assessment for Managed Dependencies"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-BR-05"
+        entry-id: "OSPS-BR-05.01"
+        strength: 8
+        remarks: "Security Assessment for Managing Package Dependencies"
+      procedures:
+        - id: "dependabot_configuration_validation"
+          name: "Dependabot Manager Configuration Validation for Source Code"
+          description: |
+            The procedure performs an automated check of the dependabot manager
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions"
+- control:
+    reference-id: "OSPS-BR-06"
+    entry-id: "OSPS-BR-06"
+    strength: 8
+    remarks: "Security Assessment for Signed Manifests and Hashes"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-BR-06"
+        entry-id: "OSPS-BR-06.01"
+        strength: 8
+        remarks: "Signed Manifests and Hashes Requirement for Releases"
+      procedures:
+        - id: "release_please_manifest_validation"
+          name: "Release Please Manifest Action Validation"
+          description: |
+            The procedure performs an automated check of the release manifest
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://github.com/marketplace/actions/release-please-manifest-action"
+- control:
+    reference-id: "OSPS-BR-07"
+    entry-id: "OSPS-BR-07"
+    strength: 8
+    remarks: "Security Assessment for Secrets and Credentials"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-BR-07"
+        entry-id: "OSPS-BR-07.01"
+        strength: 8
+        remarks: "Secrets and Credentials Requirement for Releases"
+      procedures:
+        - id: "gitignore_secrets_validation"
+          name: "Secrets and Credentials Validation in .gitignore"
+          description: |
+            The procedure performs an automated check of the .gitignore file
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement. The repository will also be checked
+            with pre-commit hooks for ensuring that secrets are not committed.
+          documentation: "https://docs.github.com/en/get-started/git-basics/ignoring-files"
+    - requirement:
+        reference-id: "OSPS-BR-07"
+        entry-id: "OSPS-BR-07.02"
+        strength: 8
+        remarks: "Secrets and Credentials Requirement for Releases Documented"
+      procedures:
+        - id: "secret_manager_openapi_documentation_validation"
+          name: "Secrets and Credentials Documented in OpenAPI Specification"
+          description: |
+            The procedure performs an automated check of the OpenAPI specification
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement. The OpenAPI specification will be
+            checked with pre-commit hooks for ensuring that secrets are not
+            committed.
+          documentation: "https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets"
+- control:
+    reference-id: "OSPS-DO-01"
+    entry-id: "OSPS-DO-01"
+    strength: 8
+    remarks: "Security Assessment of User Documentation"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-DO-01"
+        entry-id: "OSPS-DO-01.01"
+        strength: 8
+        remarks: "Required User Documentation for Released Software"
+      procedures:
+        - id: "user_documentation_validation"
+          name: "Required User Documentation Validation for Released Software"
+          description: |
+            The procedure performs an automated check of the user documentation
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://github.com/marketplace/actions/yamllint-github-action"
+- control:
+    reference-id: "OSPS-DO-02"
+    entry-id: "OSPS-DO-02"
+    strength: 8
+    remarks: "Contributing Guidelines for Issues Documented"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-DO-02"
+        entry-id: "OSPS-DO-02.01"
+        strength: 8
+        remarks: "Contributing Guidelines for Issue Reporting Documented"
+      procedures:
+        - id: "contributing_guide_validation"
+          name: "Contributing Guidelines Validation for Issue Reporting"
+          description: |
+            The procedure performs an automated check of the contributing
+            guide state in GitHub by creating a snapshot of the state from the
+            API and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"
+- control:
+    reference-id: "OSPS-DO-03"
+    entry-id: "OSPS-DO-03"
+    strength: 8
+    remarks: "Security Assessment of Released Software Authenticity Validation"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-DO-03"
+        entry-id: "OSPS-DO-03.01"
+        strength: 8
+        remarks: "Released Software Includes Documentation of Authentic Expected Outcomes"
+      procedures:
+        - id: "build_requirements_documentation_validation"
+          name: "Software Build Requirements Documented in Quick Start Guide"
+          description: |
+            The procedure performs an automated check of the build requirements
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://docs.github.com/en/contributing/style-guide-and-content-model/quickstart-content-type"
+    - requirement:
+        reference-id: "OSPS-DO-03"
+        entry-id: "OSPS-DO-03.02"
+        strength: 8
+        remarks: "Released Software Includes Documentation of Required Signing Commits"
+      procedures:
+        - id: "signed_commits_validation"
+          name: "Signed Commits Validation for Released Software"
+          description: |
+            The procedure performs an automated check of the signed commits
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits"
+- control:
+    reference-id: "OSPS-DO-04"
+    entry-id: "OSPS-DO-04"
+    strength: 8
+    remarks: "Project Documentation of Support Lifecycle Requirement"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-DO-04"
+        entry-id: "OSPS-DO-04.01"
+        strength: 8
+        remarks: "Project Documentation of Release Lifecycle Management Support"
+      procedures:
+        - id: "security_policy_validation"
+          name: "Security Policy Validation"
+          description: |
+            The procedure performs an automated check of the SECURITY.md
+            policy state in GitHub by creating a snapshot of the state from the
+            API and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository"
+- control:
+    reference-id: "OSPS-DO-05"
+    entry-id: "OSPS-DO-05"
+    strength: 8
+    remarks: "Documentation of Security Vulnerability Management"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-DO-05"
+        entry-id: "OSPS-DO-05.01"
+        strength: 8
+        remarks: "Project Documentation of Security Vulnerability Management in SUPPORT.md"
+      procedures:
+        - id: "support_policy_validation"
+          name: "Support Policy Validation in SUPPORT.md"
+          description: |
+            The procedure performs an automated check of the SUPPORT.md
+            policy state in GitHub by creating a snapshot of the state from the
+            API and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax"
+- control:
+    reference-id: "OSPS-DO-06"
+    entry-id: "OSPS-DO-06"
+    strength: 8
+    remarks: "Security Assessment of Project Documenting Dependency Tracking"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-DO-06"
+        entry-id: "OSPS-DO-06.01"
+        strength: 8
+        remarks: "Dependency Management Documentation Requirement"
+      procedures:
+        - id: "dependency_management_documentation_validation"
+          name: "Dependency Management Documentation Validation"
+          description: |
+            This procedure performs an automated check of the dependency
+            management documentation state in GitHub by creating a snapshot of
+            the state from the API and checks the output with an OPA policy to
+            ensure the outcome meets the baseline requirement. Dependency graph
+            should be enabled for viewing project dependencies.
+          documentation: "https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/exploring-the-dependencies-of-a-repository"
+- control:
+    reference-id: "OSPS-GV-01"
+    entry-id: "OSPS-GV-01"
+    strength: 8
+    remarks: "Security Assessment of Project Documenting Roles and Responsibilities"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-GV-01"
+        entry-id: "OSPS-GV-01.01"
+        strength: 8
+        remarks: "Project Roles and Responsibilities Documented"
+      procedures:
+       - id: "project_roles_documentation_validation"
+         name: "Project Roles and Responsibilities Documented"
+         description: |
+           The procedure performs an automated check of the project roles
+           state in GitHub by creating a snapshot of the state from the API
+           and checks the output with an OPA policy to ensure the outcome
+           meets the baseline requirement.
+         documentation: "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"
+    - requirement:
+        reference-id: "OSPS-GV-01"
+        entry-id: "OSPS-GV-01.02"
+        strength: 8
+        remarks: "Project Roles and Responsibilities Documented in Policy"
+      procedures:
+        - id: "governance_document_validation"
+          name: "Project Member Roles and Responsibilities Documented in GOVERNANCE.md"
+          description: |
+            The procedure performs an automated check of the project roles
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://github.com/ossf/project-template/blob/main/GOVERNANCE.md"
+- control:
+    reference-id: "OSPS-GV-02"
+    entry-id: "OSPS-GV-02"
+    strength: 8
+    remarks: "Security Assessment of Project Community Governance"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-GV-02"
+        entry-id: "OSPS-GV-02.01"
+        strength: 8
+        remarks: "Project Community Guidelines Documented"
+      procedures:
+        - id: "communication_mechanisms_documentation_validation"
+          name: "Project Communication Mechanism Documented"
+          description: |
+            The procedure performs an automated check of the communication
+            mechanisms state in GitHub by creating a snapshot of the state
+            from the API and checks the output with an OPA policy to ensure
+            the outcome meets the baseline requirement.
+          documentation: "https://www.linuxfoundation.org/resources/open-source-guides/starting-an-open-source-project"
+- control:
+    reference-id: "OSPS-GV-03"
+    entry-id: "OSPS-GV-03"
+    strength: 8
+    remarks: "Security Assessment of Project Contribution Guidelines"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-GV-03"
+        entry-id: "OSPS-GV-03.01"
+        strength: 8
+        remarks: "Project Contributor Guidelines Documented"
+      procedures:
+        - id: "contributor_guidelines_documentation_validation"
+          name: "Project Contributor Guide Exists as CONTRIBUTING.md"
+          description: |
+            The procedure performs an automated check of the contributor
+            guidelines state in GitHub by creating a snapshot of the state
+            from the API and checks the output with an OPA policy to ensure
+            the outcome meets the baseline requirement.
+          documentation: "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"
+    - requirement:
+        reference-id: "OSPS-GV-03"
+        entry-id: "OSPS-GV-03.02"
+        strength: 8
+        remarks: "Acceptable Contribution Guidelines Documented"
+      procedures:
+        - id: "code_contribution_guidelines_documentation_validation"
+          name: "Code Contribution Guide Exists in CONTRIBUTING.md"
+          description: |
+            The procedure performs an automated check of the contributor
+            guidelines state in GitHub by creating a snapshot of the state
+            from the API and checks the output with an OPA policy to ensure
+            the outcome meets the baseline requirement.
+          documentation: "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"
+- control:
+    reference-id: "OSPS-GV-04"
+    entry-id: "OSPS-GV-04"
+    strength: 8
+    remarks: "Security Assessment of Contributor Privileges"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-GV-04"
+        entry-id: "OSPS-GV-04.01"
+        strength: 8
+        remarks: "Project Contributor Privilege Guidelines Documented"
+      procedures:
+        - id: "contributor_privileges_documentation_validation"
+          name: "Project Contributor Privileges Documented in CONTRIBUTING.md"
+          description: |
+            The procedure performs an automated check of the contributor
+            guidelines state in GitHub by creating a snapshot of the state
+            from the API and checks the output with an OPA policy to ensure
+            the outcome meets the baseline requirement. Code collaborators
+            and new contributors must be granted access to escalated
+            privileges. There is a formalized procedure for granting access
+            based on the type and frequency of contributions.
+          documentation: "https://opensource.guide/leadership-and-governance/"
+- control:
+    reference-id: "OSPS-LE-01"
+    entry-id: "OSPS-LE-01"
+    strength: 8
+    remarks: "Security Assessment for Legal Open Source Compliance"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-LE-01"
+        entry-id: "OSPS-LE-01.01"
+        strength: 8
+        remarks: "Contributors Signing Legal Agreement Requirement"
+      procedures:
+        - id: "contributor_license_agreement_validation"
+          name: "Required Contributors Signed Legal Agreement on PR"
+          description: |
+            The procedure performs an automated check of the contributors
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement. Usage of a tool like CLA Assistant
+            to enable contributors to sign the agreement.
+          documentation: "https://github.com/cla-assistant/cla-assistant"
+- control:
+    reference-id: "OSPS-LE-02"
+    entry-id: "OSPS-LE-02"
+    strength: 8
+    remarks: "Security Assessment for Open Source License Compliance"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-LE-02"
+        entry-id: "OSPS-LE-02.01"
+        strength: 8
+        remarks: "License MUST conform to OSI Open Source or FSF Definition"
+      procedures:
+        - id: "license_conformance_validation"
+          name: "Required Licenses Conform to OSI or FSF Definition"
+          description: |
+            The procedure performs an automated check of the license state
+            in GitHub by creating a snapshot of the state from the API and
+            checks the output with an OPA policy to ensure the outcome meets
+            the baseline requirement.
+          documentation: "https://opensource.org/licenses"
+    - requirement:
+        reference-id: "OSPS-LE-02"
+        entry-id: "OSPS-LE-02.02"
+        strength: 8
+        remarks: "Released Software License Conformance to OSI or FSF Definition"
+      procedures:
+        - id: "released_software_license_conformance_validation"
+          name: "Released Software Licenses Conform to OSI or FSF Definition"
+          description: |
+            The procedure performs an automated check of the license state
+            of released software in GitHub by creating a snapshot of the 
+            state from the API and checks the output with an OPA policy to 
+            ensure the outcome meets the baseline requirement.
+          documentation: "https://opensource.org/licenses"
+- control:
+    reference-id: "OSPS-LE-03"
+    entry-id: "OSPS-LE-03"
+    strength: 8
+    remarks: "Security Assessment for Appropriate Licensed Software Distribution"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-LE-03"
+        entry-id: "OSPS-LE-03.01"
+        strength: 8
+        remarks: "Source Code License Maintenance Requirement"
+      procedures:
+        - id: "license_file_validation"
+          name: "License File Present in Source Code Repository"
+          description: |
+            The procedure performs an automated check of the source code
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement. Ensures that the source code
+            includes the required LICENSE file.
+          documentation: "https://opensource.org/licenses"
+    - requirement:
+        reference-id: "OSPS-LE-03"
+        entry-id: "OSPS-LE-03.02"
+        strength: 8
+        remarks: "Released Source Code License Maintenance Requirement"
+      procedures:
+        - id: "released_source_code_license_validation"
+          name: "Released Source Code Licenses Maintained"
+          description: |
+            The procedure performs an automated check of the source code
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement. Ensures that the released source
+            code includes the required LICENSE file.
+          documentation: "https://opensource.org/licenses"
+- control:
+    reference-id: "OSPS-SA-01"
+    entry-id: "OSPS-SA-01"
+    strength: 8
+    remarks: "Security Assessment for Design Documentation of Released Software"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-SA-01"
+        entry-id: "OSPS-SA-01.01"
+        strength: 8
+        remarks: "Design Documentation Validation Requirement"
+      procedures:
+        - id: "openapi_design_validation"
+          name: "Required Design Documentation Validated by OpenAPI Analyzer"
+          description: |
+            The procedure performs an automated check of the design
+            documentation state in OpenAPI Analyzer by creating a snapshot of
+            the state from the API and checks the output with an OPA policy
+            to ensure the outcome meets the baseline requirement.
+          documentation: "https://github.com/marketplace/actions/openapi-analyzer"
+- control:
+    reference-id: "OSPS-SA-02"
+    entry-id: "OSPS-SA-02"
+    strength: 8
+    remarks: "Security Assessment for External API Documentation"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-SA-02"
+        entry-id: "OSPS-SA-02.01"
+        strength: 8
+        remarks: "Project API Documentation Validation Requirement"
+      procedures:
+        - id: "openapi_project_validation"
+          name: "Required Project Documentation Validated by OpenAPI Analyzer"
+          description: |
+            The procedure performs an automated check of the documentation
+            state in OpenAPI Analyzer by creating a snapshot of the state
+            from the API and checks the output with an OPA policy to ensure
+            the outcome meets the baseline requirement. Ensure that the software
+            interfaces (APIs) are documented for interaction and expected output.
+          documentation: "https://github.com/marketplace/actions/openapi-analyzer"
+- control:
+    reference-id: "OSPS-SA-03"
+    entry-id: "OSPS-SA-03"
+    strength: 9
+    remarks: "Security Assessment for Code Analysis and Threat Modeling"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-SA-03"
+        entry-id: "OSPS-SA-03.01"
+        strength: 9
+        remarks: "CodeQL Analysis Validation Requirement"
+      procedures:
+        - id: "codeql_analysis_validation"
+          name: "Required CodeQL Analysis Validation for Repository"
+          description: |
+            The procedure performs an automated check of the codeql analysis
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement. The badges are added to the README.md
+            file.
+          documentation: "https://codeql.github.com/docs/"
+    - requirement:
+        reference-id: "OSPS-SA-03"
+        entry-id: "OSPS-SA-03.02"
+        strength: 9
+        remarks: "Threat Modeling and Analysis Requirement"
+      procedures:
+        - id: "threat_dragon_workflow_validation"
+          name: "Required Threat Dragon Workflow Validation in Repository"
+          description: |
+            The procedure performs an automated check of the threat modeling
+            state in Threat Dragon by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://github.com/OWASP/threat-dragon"
+        - id: "surface_analysis_validation"
+          name: "Required Surface Analysis Validation in Repository"
+          description: |
+            The procedure performs an automated check of the surface analysis
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://github.com/semgrep/semgrep"
+- control:
+    reference-id: "OSPS-QA-04"
+    entry-id: "OSPS-QA-04"
+    strength: 7
+    remarks: "Quality Assurance for Subproject Management"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-QA-04"
+        entry-id: "OSPS-QA-04.01"
+        strength: 7
+        remarks: "Subproject Health Monitoring Requirement"
+      procedures:
+        - id: "subproject_health_badges_validation"
+          name: "Subprojects Health Badges Validation"
+          description: |
+            The procedure performs an automated check of the subproject
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+            The procedure also checks for the existence of the subproject
+            badges in the README.md file.
+          documentation: "https://docs.github.com/en/actions/how-tos/monitor-workflows/add-a-status-badge"
+    - requirement:
+        reference-id: "OSPS-QA-04"
+        entry-id: "OSPS-QA-04.02"
+        strength: 7
+        remarks: "Subproject Strictness Configuration Requirement"
+      procedures:
+        - id: "subproject_strictness_configuration_validation"
+          name: "Subproject Strictness Threshold Configuration Validation"
+          description: |
+            The procedure performs an automated check of the subproject
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement. The strictness threshold is 
+            defined in the subproject's .github/settings.yml file.
+          documentation: "https://resources.github.com/learn/pathways/administration-governance/essentials/configure-github-enterprise-cloud-enterprise-settings-policies/"
+- control:
+    reference-id: "OSPS-QA-05"
+    entry-id: "OSPS-QA-05"
+    strength: 8
+    remarks: "Quality Assurance for Source Control Management"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-QA-05"
+        entry-id: "OSPS-QA-05.01"
+        strength: 8
+        remarks: "Generated Artifacts Management Requirement"
+      procedures:
+        - id: "generated_artifacts_cleanup_validation"
+          name: "Generated Executable Artifacts Removed from Source Control"
+          description: |
+            The procedure performs an automated check of the generated
+            executable artifacts state in the source control by creating a
+            snapshot of the state from the API and checks the output with an
+            OPA policy to ensure the outcome meets the baseline requirement.
+            The procedure also checks for the existence of the generated
+            artifacts in the source control.
+          documentation: "https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files"
+    - requirement:
+        reference-id: "OSPS-QA-05"
+        entry-id: "OSPS-QA-05.02"
+        strength: 8
+        remarks: "Binary File Management Requirement"
+      procedures:
+        - id: "binary_files_gitignore_validation"
+          name: "Validate unreviewable Binaries listed in Git Ignore"
+          description: |
+            The procedure performs an automated check of the unreviewable
+            binaries state in the source control by creating a snapshot of
+            the state from the API and checks the output with an OPA policy
+            to ensure the outcome meets the baseline requirement.
+            The procedure also checks for the existence of the unreviewable
+            binaries in the source control.
+          documentation: "https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files"
+- control:
+    reference-id: "OSPS-QA-06"
+    entry-id: "OSPS-QA-06"
+    strength: 9
+    remarks: "Quality Assurance for Testing and Coverage"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-QA-06"
+        entry-id: "OSPS-QA-06.01"
+        strength: 9
+        remarks: "Test Coverage Validation Requirement"
+      procedures:
+        - id: "sonarqube_coverage_validation"
+          name: "SonarQube Test Coverage Validation for Repository"
+          description: |
+            The procedure performs an automated check of the test coverage
+            state in SonarQube by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://docs.sonarqube.org/latest/"
+    - requirement:
+        reference-id: "OSPS-QA-06"
+        entry-id: "OSPS-QA-06.02"
+        strength: 8
+        remarks: "Testing Procedures Validation Requirement"
+      procedures:
+        - id: "openapi_testing_validation"
+          name: "Required Testing Procedures Validated by OpenAPI Analyzer"
+          description: |
+            The procedure performs an automated check of the documentation
+            state in OpenAPI Analyzer by creating a snapshot of the state
+            from the API and checks the output with an OPA policy to ensure
+            the outcome meets the baseline requirement.
+          documentation: "https://swagger.io/specification/"
+    - requirement:
+        reference-id: "OSPS-QA-06"
+        entry-id: "OSPS-QA-06.03"
+        strength: 8
+        remarks: "Breaking Changes Validation Requirement"
+      procedures:
+        - id: "openapi_breaking_changes_validation"
+          name: "Breaking Changes Validated by OpenAPI Analyzer"
+          description: |
+            The procedure performs an automated check of the documentation
+            state in OpenAPI Analyzer by creating a snapshot of the state
+            from the API and checks the output with an OPA policy to ensure
+            the outcome meets the baseline requirement.
+          documentation: "https://github.com/oasdiff/oasdiff"
+- control:
+    reference-id: "OSPS-QA-07"
+    entry-id: "OSPS-QA-07"
+    strength: 9
+    remarks: "Quality Assurance for Advanced Branch Protection"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-QA-07"
+        entry-id: "OSPS-QA-07.01"
+        strength: 9
+        remarks: "Advanced Branch Protection Validation Requirement"
+      procedures:
+        - id: "github_branch_protection"
+          name: "GitHub API Verifications for Branch Protection"
+          description: |
+            The procedure performs an automated check of the branch ruleset
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches"
+- control:
+    reference-id: "OSPS-VM-01"
+    entry-id: "OSPS-VM-01"
+    strength: 9
+    remarks: "Security Assessment for Reporting and Addressing Vulnerabilities"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-VM-01"
+        entry-id: "OSPS-VM-01.01"
+        strength: 9
+        remarks: "Security Vulnerability Disclosure Policy Validation Requirement"
+      procedures:
+        - id: "security_vulnerability_policy_validation"
+          name: "Security Vulnerability Disclosure Policy Validation in SECURITY.md"
+          description: |
+            The procedure performs an automated check of the security vulnerability
+            disclosure policy state in GitHub by creating a snapshot of the
+            state from the API and checks the output with an OPA policy to
+            ensure the outcome meets the baseline requirement.
+          documentation: "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository"
+- control:
+    reference-id: "OSPS-VM-02"
+    entry-id: "OSPS-VM-02"
+    strength: 9
+    remarks: "Security Assessment for Published Process and Contacts for Escalated Vulnerabilities"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-VM-02"
+        entry-id: "OSPS-VM-02.01"
+        strength: 9
+        remarks: "Security Vulnerability Escalation Contacts Documented Requirement"
+      procedures:
+        - id: "security_vulnerability_escalation_contacts_validation"
+          name: "Security Vulnerability Escalation Contacts Validation in SECURITY.md"
+          description: |
+            The procedure performs an automated check of the security vulnerability
+            escalation contacts state in GitHub by creating a snapshot of the
+            state from the API and checks the output with an OPA policy to
+            ensure the outcome meets the baseline requirement.
+          documentation: "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file"
+- control:
+    reference-id: "OSPS-VM-03"
+    entry-id: "OSPS-VM-03"
+    strength: 9
+    remarks: "Security Assessment for Timely Reporting of Private Security Vulnerabilities"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-VM-03"
+        entry-id: "OSPS-VM-03.01"
+        strength: 9
+        remarks: "Private Vulnerability Reporting Process for Security Researchers"
+      procedures:
+        - id: "codeql_security_report_actions_validation"
+          name: "Required CodeQL Security Report Actions Validation in Repository for Researchers"
+          description: |
+            The procedure performs an automated check of the codeql security
+            report actions state in GitHub by creating a snapshot of the
+            state from the API and checks the output with an OPA policy to
+            ensure the outcome meets the baseline requirement.
+          documentation: "https://github.com/github/codeql-action"
+- control:
+    reference-id: "OSPS-VM-04"
+    entry-id: "OSPS-VM-04"
+    strength: 9
+    remarks: "Security Assessment for Validation of Project Consumer Awareness of Known Vulnerabilities"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-VM-04"
+        entry-id: "OSPS-VM-04.01"
+        strength: 9
+        remarks: "Discovered Vulnerability Disclosure Policy Validation Requirement"
+      procedures:
+        - id: "scanning_tool_badges_validation"
+          name: "Discovered Vulnerability Disclosure Policy Validation in README.md as Badges"
+          description: |
+            The procedure performs an automated check of the scanning tool
+            badges state in GitHub by creating a snapshot of the state from the
+            API and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://docs.github.com/en/code-security/code-scanning/managing-your-code-scanning-configuration/about-the-tool-status-page"
+    - requirement:
+        reference-id: "OSPS-VM-04"
+        entry-id: "OSPS-VM-04.02"
+        strength: 9
+        remarks: "VEX Validation Requirement for Known Vulnerabilities"
+      procedures:
+        - id: "vex_validation_documentation_validation"
+          name: "VEX Feed Documented for Exploitable Known Vulnerabilities"
+          description: |
+            The procedure performs an automated check of the VEX feed state
+            in GitHub by creating a snapshot of the state from the API and
+            checks the output with an OPA policy to ensure the outcome meets
+            the baseline requirement.
+          documentation: "https://github.com/openvex"
+- control:
+    reference-id: "OSPS-VM-05"
+    entry-id: "OSPS-VM-05"
+    strength: 9
+    remarks: "Security Assessment for SCA Remediation Threshold for Findings and Vulnerabilities"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-VM-05"
+        entry-id: "OSPS-VM-05.01"
+        strength: 9
+        remarks: "Defined Threshold for SCA Findings and Vulnerabilities in Policy"
+      procedures:
+        - id: "dependabot_scanning_threshold_validation"
+          name: "Dependabot SCA Findings and Vulnerabilities Threshold Validation in Policy and Alerts"
+          description: |
+            The procedure performs an automated check of the dependabot scanning
+            threshold state in GitHub by creating a snapshot of the state from
+            the API and checks the output with an OPA policy to ensure the
+            outcome meets the baseline requirement.
+          documentation: "https://docs.github.com/en/code-security/dependabot/dependabot-alerts/configuring-dependabot-alerts"
+    - requirement:
+        reference-id: "OSPS-VM-05"
+        entry-id: "OSPS-VM-05.02"
+        strength: 9
+        remarks: "Defined Policy Addressing SCA Findings Pre-release"
+      procedures:
+        - id: "sca_analysis_policy_validation"
+          name: "SCA Analysis Policy Validation for Pre-release"
+          description: |
+            The procedure performs an automated check of the sca analysis
+            policy state in GitHub by creating a snapshot of the state from
+            the API and checks the output with an OPA policy to ensure the
+            outcome meets the baseline requirement.
+          documentation: "https://www.sonatype.com/"
+    - requirement:
+        reference-id: "OSPS-VM-05"
+        entry-id: "OSPS-VM-05.03"
+        strength: 9
+        remarks: "Status Check for SCA Findings and Vulnerabilities Enforced in Policy"
+      procedures:
+        - id: "sca_analysis_status_check_validation"
+          name: "SCA Analysis Status Check Validation in Policy"
+          description: |
+            The procedure performs an automated check of the sca analysis
+            status check state in GitHub by creating a snapshot of the state
+            from the API and checks the output with an OPA policy to ensure
+            the outcome meets the baseline requirement.
+          documentation: "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks"
+- control:
+    reference-id: "OSPS-VM-06"
+    entry-id: "OSPS-VM-06"
+    strength: 9
+    remarks: "Security Assessment for SCA Remediation Threshold for Findings and Vulnerabilities"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-VM-06"
+        entry-id: "OSPS-VM-06.01"
+        strength: 9
+        remarks: "SAST Findings Threshold Defined Requirement"
+      procedures:
+        - id: "sast_findings_threshold_validation"
+          name: "SAST Findings Threshold Validation in Policy and Alerts"
+          description: |
+            The procedure performs an automated check of the sast findings
+            threshold state in GitHub by creating a snapshot of the state
+            from the API and checks the output with an OPA policy to ensure
+            the outcome meets the baseline requirement.
+          documentation: "https://github.com/SonarSource/sonarqube"
+    - requirement:
+        reference-id: "OSPS-VM-06"
+        entry-id: "OSPS-VM-06.02"
+        strength: 9
+        remarks: "Status Check for SAST Findings Enforced in Policy"
+      procedures:
+        - id: "sast_status_check_validation"
+          name: "SAST Status Check Validation in Policy Based on Threshold"
+          description: |
+            The procedure performs an automated check of the sast status check
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://github.com/SonarSource/sonarqube"
