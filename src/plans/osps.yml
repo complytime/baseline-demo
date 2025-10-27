@@ -1,3 +1,92 @@
+- control-id: OSPS-QA-03
+  assessments:
+    - requirement-id: OSPS-QA-03.01
+      procedures:
+        - id: "github_branch_protection"
+          name: "GitHub API Verifications for Branch Protection"
+          description: |
+            The procedure performs an automated check of the branch ruleset
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement. A rule in the GitHub Branch Protection
+            requires all quality checks to pass before a pull request can be merged
+            or committed to the primary branch.
+- control-id: OSPS-QA-04
+  assessments:
+    - requirement-id: OSPS-QA-04.01
+      procedures:
+        - id: "subprojects_defined_with_badges"
+          name: "Subprojects Defined with Badges for Health"
+          description: |
+            The procedure performs an automated check of the subproject
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+            The procedure also checks for the existence of the subproject
+            badges in the README.md file.
+    - requirement-id: OSPS-QA-04.02
+      procedures:
+        - id: "strictness_threshold_defined_for_subprojects"
+          name: "Subproject Strictness Threshold Defined"
+          description: |
+            The procedure performs an automated check of the subproject
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement. The strictness threshold is 
+            defined in the subproject's .github/settings.yml file.'
+- control-id: OSPS-QA-05
+  assessments:
+    - requirement-id: OSPS-QA-05.01
+      procedures:
+        - id: "generated_artifacts_removed_from_source_control"
+          name: "Generated Executable Artifacts Removed from Source Control"
+          description: |
+            The procedure performs an automated check of the generated
+            executable artifacts state in the source control by creating a
+            snapshot of the state from the API and checks the output with an
+            OPA policy to ensure the outcome meets the baseline requirement.
+            The procedure also checks for the existence of the generated
+            artifacts in the source control.
+    - requirement-id: OSPS-QA-05.02
+      procedures:
+        - id: "validate_binaries_gitignore"
+          name: "Validate unreviewable Binaries listed in Git Ignore"
+          description: |
+            The procedure performs an automated check of the unreviewable
+            binaries state in the source control by creating a snapshot of
+            the state from the API and checks the output with an OPA policy
+            to ensure the outcome meets the baseline requirement.
+            The procedure also checks for the existence of the unreviewable
+            binaries in the source control.
+- control-id: OSPS-QA-06
+  assessments:
+    - requirement-id: OSPS-QA-06.01
+      procedures:
+        - id: "sonarqube_coverage_defined"
+          name: "SonarQube Test Coverage Defined for Repository"
+          description: |
+            The procedure performs an automated check of the test coverage
+            state in SonarQube by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+    - requirement-id: OSPS-QA-06.02
+      procedures:
+        - id: "openapi_analyzer_defined"
+          name: "Required Testing Procedures Validated by OpenAPI Analyzer"
+          description: |
+            The procedure performs an automated check of the documentation
+            state in OpenAPI Analyzer by creating a snapshot of the state
+            from the API and checks the output with an OPA policy to ensure
+            the outcome meets the baseline requirement.
+    - requirement-id: OSPS-QA-06.03
+      procedures:
+        - id: "breaking_changes_validated_openapi"
+          name: "Breaking Changes Validated by OpenAPI Analyzer"
+          description: |
+            The procedure performs an automated check of the documentation
+            state in OpenAPI Analyzer by creating a snapshot of the state
+            from the API and checks the output with an OPA policy to ensure
+            the outcome meets the baseline requirement.
 - control-id: OSPS-QA-07
   assessments:
     - requirement-id: OSPS-QA-07.01
@@ -9,4 +98,5 @@
             state in GitHub by creating a snapshot of the state from the API
             and checks the output with an OPA policy to ensure the outcome
             meets the baseline requirement.
-
+            
+            
