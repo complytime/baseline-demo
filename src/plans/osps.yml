@@ -13,6 +13,116 @@ metadata:
 
 plans:
 - control:
+    reference-id: "OSPS-AC-01"
+    entry-id: "OSPS-AC-01"
+    strength: 8
+    remarks: "Security Assessment for Required Multi-factor Authentication"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-AC-01"
+        entry-id: "OSPS-AC-01.01"
+        strength: 8
+        remarks: "Multi-factor Authentication Requirement"
+      procedures:
+        - id: "mfa_enforced"
+          name: "Required Multi-factor Authentication for Administrative Access"
+          description: |
+            The procedure performs an automated check of the administrative
+            access state in GitHub by creating a snapshot of the state from the
+            API and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication"
+- control:
+    reference-id: "OSPS-AC-02"
+    entry-id: "OSPS-AC-02"
+    strength: 8
+    remarks: "Security Assessment for Rule of Least Privilege"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-AC-02"
+        entry-id: "OSPS-AC-02.01"
+        strength: 8
+        remarks: "Rule of Least Privilege Requirement for Contributors"
+      procedures:
+        - id: "least_privilege_enforced"
+          name: "Least Privilege Enforced for New Contributors"
+          description: |
+            The procedure performs an automated check of the administrative
+            access state in GitHub by creating a snapshot of the state from the
+            API and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement. The CODEOWNERS file is used for
+            evaluation of roles and permissions.
+          documentation: "https://docs.github.com/en/actions/reference/security/secure-use#using-codeowners-to-monitor-changes"
+- control:
+    reference-id: "OSPS-AC-03"
+    entry-id: "OSPS-AC-03"
+    strength: 8
+    remarks: "Security Assessment for Primary Branch Protection"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-AC-03"
+        entry-id: "OSPS-AC-03.01"
+        strength: 8
+        remarks: "Primary Branch Protection Requirements"
+      procedures:
+        - id: "pull_request_protection_enforced"
+          name: "Pull Request Protection Enforced for Primary Branch"
+          description: |
+            The procedure performs an automated check of the push access to
+            the primary branch in GitHub by creating a snapshot of the state 
+            from the API and checks the output with an OPA policy to ensure 
+            the outcome meets the baseline requirement.
+          documentation: "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests"
+    - requirement:
+        reference-id: "OSPS-AC-03"
+        entry-id: "OSPS-AC-03.02"
+        strength: 8
+        remarks: "Primary Branch Deletion Protection Requirement"
+      procedures:
+        - id: "primary_branch_deletion_enforced"
+          name: "Primary Branch Deletion Protection Enforced"
+          description: |
+            The procedure performs an automated check of the push access to
+            the primary branch in GitHub by creating a snapshot of the state 
+            from the API and checks the output with an OPA policy to ensure 
+            the outcome meets the baseline requirement.
+          documentation: "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests"
+- control:
+    reference-id: "OSPS-AC-04"
+    entry-id: "OSPS-AC-04"
+    strength: 8
+    remarks: "Security Assessment for CI/CD Pipeline Permissions"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-AC-04"
+        entry-id: "OSPS-AC-04.01"
+        strength: 8
+        remarks: "Required CI/CD Pipeline Permissions Limited"
+      procedures:
+        - id: "ci_cd_pipeline_permissions_enforced"
+          name: "Default CI/CD Pipeline Least Privilege Permissions Enforced"
+          description: |
+            The procedure performs an automated check of the CI/CD step
+            procedures in GitHub by creating a snapshot of the state 
+            from the API and checks the output with an OPA policy to ensure 
+            the outcome meets the baseline requirement.
+          documentation: "https://docs.github.com/en/enterprise-cloud@latest/enterprise-onboarding/github-actions-for-your-enterprise/getting-started-with-github-actions-for-github-enterprise-cloud"
+    - requirement:
+        reference-id: "OSPS-AC-04"
+        entry-id: "OSPS-AC-04.02"
+        strength: 8
+        remarks: "CI/CD Pipeline Permissions Enforced for Lowest Privilege"
+      procedures:
+        - id: "ci_cd_least_privilege_enforced"
+          name: "CI/CD Pipeline Least Privilege Permissions Enforced"
+          description: |
+            The procedure performs an automated check of the push access from
+            the configured CI/CD pipeline in GitHub by creating a snapshot of 
+            the state from the API and checks the output with an OPA policy to 
+            ensure the outcome meets the baseline requirement. Validating the
+            principle of least privilege for the CI/CD pipeline permissions.
+          documentation: "https://docs.github.com/en/enterprise-cloud@latest/enterprise-onboarding/github-actions-for-your-enterprise/getting-started-with-github-actions-for-github-enterprise-cloud"
+- control:
     reference-id: "OSPS-LE-01"
     entry-id: "OSPS-LE-01"
     strength: 8
