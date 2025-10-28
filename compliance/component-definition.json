@@ -16,7 +16,7 @@
           "value": "OSPS-QA-07.01"
          }
         ],
-        "uuid": "d11e4bea-c14d-4e6a-bbfd-3bc1ca3d3d58"
+        "uuid": "9cf22b95-516d-4622-88b0-99cffbe7f257"
        },
        {
         "control-id": "au-6",
@@ -28,7 +28,7 @@
           "value": "OSPS-QA-07.01"
          }
         ],
-        "uuid": "53ab84c5-8ad7-4fb6-8aa5-69d7d3522b9e"
+        "uuid": "8c1850bf-691e-4319-a8c0-49822db75004"
        },
        {
         "control-id": "pl-8",
@@ -40,7 +40,7 @@
           "value": "OSPS-QA-07.01"
          }
         ],
-        "uuid": "9f01891b-470b-4358-a754-7883217146f6"
+        "uuid": "cb635c26-c389-44d5-a92b-193947a3a008"
        },
        {
         "control-id": "sa-15",
@@ -52,7 +52,7 @@
           "value": "OSPS-QA-07.01"
          }
         ],
-        "uuid": "2562c0d0-79e2-4d2b-b7f4-b5d78420ab08"
+        "uuid": "1e46bb1d-87de-4006-9e5e-1a555bb148d8"
        },
        {
         "control-id": "sr-3",
@@ -64,7 +64,7 @@
           "value": "OSPS-QA-07.01"
          }
         ],
-        "uuid": "a06dd5ae-a6ff-454b-bb9d-d1429f86f144"
+        "uuid": "3aef7874-8df4-4a48-ae89-402790f03083"
        }
       ],
       "props": [
@@ -75,7 +75,7 @@
        }
       ],
       "source": "https://csrc.nist.gov/pubs/sp/800/161/r1/upd1/final",
-      "uuid": "84b24e39-f1e4-4ca6-8df0-9b9604166b87"
+      "uuid": "adc03419-e444-4fc1-91c6-92a42289a971"
      },
      {
       "description": "The Secure Software Development Framework (SSDF) is a set of fundamental,\nsound, and secure software development practices based on established\nsecure software development practice documents from organizations such as\nBSA, OWASP, and SAFECode. Few software development life cycle (SDLC) models\nexplicitly address software security in detail, so practices like those in\nthe SSDF need to be added to and integrated with each SDLC implementation.\nFollowing the SSDF practices should help software producers reduce the\nnumber of vulnerabilities in released software, reduce the potential impact\nof the exploitation of undetected or unaddressed vulnerabilities, and\naddress the root causes of vulnerabilities to prevent recurrences. Also,\nbecause the SSDF provides a common language for describing secure software\ndevelopment practices, software producers and acquirers can use it to foster\ntheir communications for procurement processes and other management activities.\n",
@@ -90,7 +90,7 @@
           "value": "OSPS-QA-07.01"
          }
         ],
-        "uuid": "58049210-448a-4410-963f-e8da8b9b8255"
+        "uuid": "b48dabcc-a8dc-4d4f-a4b9-9efaf0b75906"
        }
       ],
       "props": [
@@ -101,7 +101,7 @@
        }
       ],
       "source": "https://csrc.nist.gov/pubs/sp/800/218/final",
-      "uuid": "7d18817b-d848-4cfe-b204-eca1f58c2b90"
+      "uuid": "f15fffe6-b058-4a1d-9473-b5a67bf85c01"
      }
     ],
     "description": "",
@@ -137,9 +137,9 @@
       "value": "main_branch_min_approvals"
      }
     ],
-    "title": "GitHub Repository",
+    "title": "Github Repository",
     "type": "software",
-    "uuid": "1223698d-9e8b-4d49-b2c2-82b188791682"
+    "uuid": "269b1aa4-d0bc-4976-8b27-69a93aa0b122"
    },
    {
     "description": "",
@@ -160,20 +160,20 @@
       "name": "Check_Description",
       "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
       "remarks": "rule_set_0",
-      "value": "The procedure performs an automated check of the branch ruleset\nstate in GitHub by creating a snapshot of the state from the API\nand checks the output with an OPA policy to ensure the outcome\nmeets the baseline requirement.\n"
+      "value": "The procedure performs an automated check of the branch ruleset state in GitHub by creating a snapshot of the state from the API and checks the output with an OPA policy to ensure the outcome meets the baseline requirement."
      }
     ],
     "title": "conforma",
     "type": "validation",
-    "uuid": "340de96a-9c94-40f9-9082-d512907b9733"
+    "uuid": "baaceebb-31a9-4919-9327-f0ebf5674d72"
    }
   ],
   "metadata": {
-   "last-modified": "2025-10-27T19:57:57.900869832-04:00",
+   "last-modified": "2025-10-28T17:28:30.467392528-04:00",
    "oscal-version": "1.1.3",
    "title": "Example",
    "version": "0.1.0"
   },
-  "uuid": "9b419ab6-23d8-4e8e-9618-1bfe8af370fd"
+  "uuid": "464e4b94-e4af-4e33-b0e7-a9ecb74e13bc"
  }
 }
