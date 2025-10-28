@@ -123,6 +123,211 @@ plans:
             principle of least privilege for the CI/CD pipeline permissions.
           documentation: "https://docs.github.com/en/enterprise-cloud@latest/enterprise-onboarding/github-actions-for-your-enterprise/getting-started-with-github-actions-for-github-enterprise-cloud"
 - control:
+    reference-id: "OSPS-BR-01"
+    entry-id: "OSPS-BR-01"
+    strength: 8
+    remarks: "Security Assessment for Build and Release Pipelines"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-BR-01"
+        entry-id: "OSPS-AC-BR-01.01"
+        strength: 8
+        remarks: "Build and Release Pipeline Access Security Requirement"
+      procedures:
+        - id: "build_release_pipeline_procedures_enforced"
+          name: "Build and Release Pipeline Security Enforced"
+          description: |
+            The procedure performs an automated check of the build and release
+            procedures in GitHub by creating a snapshot of the state from the
+            API and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication"
+    - requirement:
+        reference-id: "OSPS-BR-01"
+        entry-id: "OSPS-AC-BR-01.02"
+        strength: 8
+        remarks: "Build and Release Pipeline Branch Sanitation Security Requirement"
+      procedures:
+        - id: "build_release_branch_semantics_enforced"
+          name: "Build and Release Pipeline Branching Semantic Conventions Enforced"
+          description: |
+            The procedure performs an automated check of the build and release
+            branches for a pipeline in GitHub by creating a snapshot of the state
+            from the API and checks the output with an OPA policy to ensure the 
+            outcome meets the baseline requirement.
+          documentation: "https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication"
+- control:
+    reference-id: "OSPS-BR-02"
+    entry-id: "OSPS-BR-02"
+    strength: 8
+    remarks: "Security Assessment for Asset Version Management"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-BR-02"
+        entry-id: "OSPS-BR-02.01"
+        strength: 8
+        remarks: "Security Assessment for Release Identifier Management"
+      procedures:
+        - id: "git_semantic_version_enforced"
+          name: "Release Identifier Management Enforced in GitHub Actions"
+          description: |
+            The procedure performs an automated check of the semantic version
+            associated with commits and releases in GitHub by creating a
+            snapshot of the state from the API and checks the output with an
+            OPA policy to ensure the outcome meets the baseline requirement.
+          documentation: "https://github.com/marketplace/actions/git-semantic-version"
+    - requirement:
+        reference-id: "OSPS-BR-02"
+        entry-id: "OSPS-BR-02.02"
+        strength: 8
+        remarks: "Security Assessment for Asset Defined Versioning Scheme"
+      procedures:
+        - id: "git_semantic_versions_applied_across_assets"
+          name: "Asset Versioning Scheme Defined in GitHub Actions"
+          description: |
+            The procedure performs an automated check of the semantic version
+            associated with assets within releases in GitHub by creating a
+            snapshot of the state from the API and checks the output with an
+            OPA policy to ensure the outcome meets the baseline requirement.
+          documentation: "https://github.com/marketplace/actions/git-semantic-version"
+- control:
+    reference-id: "OSPS-BR-03"
+    entry-id: "OSPS-BR-03"
+    strength: 8
+    remarks: "Security Assessment for Encryption of URIs"
+  assessments:
+      - requirement:
+          reference-id: "OSPS-BR-03"
+          entry-id: "OSPS-BR-03.01"
+          strength: 8
+          remarks: "Encryption of URIs Requirement"
+        procedures:
+          - id: "git_ssh_protocol_enforced"
+            name: "SSH and HTTPS Protocols Enforced for Git Operations"
+            description: |
+              The procedure performs an automated check of the Git operations
+              state in GitHub by creating a snapshot of the state from the API
+              and checks the output with an OPA policy to ensure the outcome
+              meets the baseline requirement. The procedure also checks for
+              signing commits and tags in the Git operations. The procedure
+              also leverages te GitHub App installation for API requests in 
+              CI/CD pipeline authentication.
+            documentation: "https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-as-a-github-app-installation"
+      - requirement:
+          reference-id: "OSPS-BR-03"
+          entry-id: "OSPS-BR-03.02"
+          strength: 8
+          remarks: "Encryption of URIs Requirement"
+        procedures:
+          - id: "git_release_encryption_configured"
+            name: "SSH and HTTPS Protocols Configured and Enforced for Release Pipelines"
+            description: |
+              The procedure performs an automated check of the Git operations
+              state in GitHub by creating a snapshot of the state from the API
+              and checks the output with an OPA policy to ensure the outcome
+              meets the baseline requirement. The procedure also checks for
+              signing commits and tags in the Git operations. The procedure
+              also leverages te GitHub App installation for API requests in 
+              CI/CD pipeline authentication.
+            documentation: "https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-as-a-github-app-installation"
+- control:
+    reference-id: "OSPS-BR-04"
+    entry-id: "OSPS-BR-04"
+    strength: 8
+    remarks: "Security Assessment for Release Decisions"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-BR-04"
+        entry-id: "OSPS-BR-04.01"
+        strength: 8
+        remarks: "Release CHANGELOG Security Requirement Enforced"
+      procedures:
+        - id: "release_please_changelog_enforced"
+          name: "Release Please CHANGELOG Configured and Enforced"
+          description: |
+            The procedure performs an automated check of the release CHANGELOG
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://github.com/marketplace/actions/release-please-action"
+- control:
+    reference-id: "OSPS-BR-05"
+    entry-id: "OSPS-BR-05"
+    strength: 8
+    remarks: "Security Assessment for Managed Dependencies"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-BR-05"
+        entry-id: "OSPS-BR-05.01"
+        strength: 8
+        remarks: "Security Assessment for Managing Package Dependencies"
+      procedures:
+        - id: "dependabot_manager_configured"
+          name: "Dependabot Manager Configured for Source Code"
+          description: |
+            The procedure performs an automated check of the dependabot manager
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions"
+- control:
+    reference-id: "OSPS-BR-06"
+    entry-id: "OSPS-BR-06"
+    strength: 8
+    remarks: "Security Assessment for Signed Manifests and Hashes"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-BR-06"
+        entry-id: "OSPS-BR-06.01"
+        strength: 8
+        remarks: "Signed Manifests and Hashes Requirement for Releases"
+      procedures:
+        - id: "release_please_manifest_action_enforced"
+          name: "Release Please Manifest Action Configured and Enforced"
+          description: |
+            The procedure performs an automated check of the release manifest
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://github.com/marketplace/actions/release-please-manifest-action"
+- control:
+    reference-id: "OSPS-BR-07"
+    entry-id: "OSPS-BR-07"
+    strength: 8
+    remarks: "Security Assessment for Secrets and Credentials"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-BR-07"
+        entry-id: "OSPS-BR-07.01"
+        strength: 8
+        remarks: "Secrets and Credentials Requirement for Releases"
+      procedures:
+        - id: "gitignore_configured_secrets"
+          name: "Secrets and Credentials Configured in .gitignore"
+          description: |
+            The procedure performs an automated check of the .gitignore file
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement. The repository will also be checked
+            with pre-commit hooks for ensuring that secrets are not committed.
+          documentation: "https://docs.github.com/en/get-started/git-basics/ignoring-files"
+    - requirement:
+        reference-id: "OSPS-BR-07"
+        entry-id: "OSPS-BR-07.02"
+        strength: 8
+        remarks: "Secrets and Credentials Requirement for Releases Documented"
+      procedures:
+        - id: "secret_manager_documented_openapi_validation"
+          name: "Secrets and Credentials Documented in OpenAPI Specification"
+          description: |
+            The procedure performs an automated check of the OpenAPI specification
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement. The OpenAPI specification will be
+            checked with pre-commit hooks for ensuring that secrets are not
+            committed.
+          documentation: "https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets"
+- control:
     reference-id: "OSPS-LE-01"
     entry-id: "OSPS-LE-01"
     strength: 8
