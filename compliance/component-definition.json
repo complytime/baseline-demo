@@ -1,0 +1,179 @@
+{
+ "component-definition": {
+  "components": [
+   {
+    "control-implementations": [
+     {
+      "description": "",
+      "implemented-requirements": [
+       {
+        "control-id": "ac-5",
+        "description": "",
+        "props": [
+         {
+          "name": "Rule_Id",
+          "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
+          "value": "OSPS-QA-07.01"
+         }
+        ],
+        "uuid": "d11e4bea-c14d-4e6a-bbfd-3bc1ca3d3d58"
+       },
+       {
+        "control-id": "au-6",
+        "description": "",
+        "props": [
+         {
+          "name": "Rule_Id",
+          "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
+          "value": "OSPS-QA-07.01"
+         }
+        ],
+        "uuid": "53ab84c5-8ad7-4fb6-8aa5-69d7d3522b9e"
+       },
+       {
+        "control-id": "pl-8",
+        "description": "",
+        "props": [
+         {
+          "name": "Rule_Id",
+          "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
+          "value": "OSPS-QA-07.01"
+         }
+        ],
+        "uuid": "9f01891b-470b-4358-a754-7883217146f6"
+       },
+       {
+        "control-id": "sa-15",
+        "description": "",
+        "props": [
+         {
+          "name": "Rule_Id",
+          "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
+          "value": "OSPS-QA-07.01"
+         }
+        ],
+        "uuid": "2562c0d0-79e2-4d2b-b7f4-b5d78420ab08"
+       },
+       {
+        "control-id": "sr-3",
+        "description": "",
+        "props": [
+         {
+          "name": "Rule_Id",
+          "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
+          "value": "OSPS-QA-07.01"
+         }
+        ],
+        "uuid": "a06dd5ae-a6ff-454b-bb9d-d1429f86f144"
+       }
+      ],
+      "props": [
+       {
+        "name": "Framework_Short_Name",
+        "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
+        "value": "800-161"
+       }
+      ],
+      "source": "https://csrc.nist.gov/pubs/sp/800/161/r1/upd1/final",
+      "uuid": "84b24e39-f1e4-4ca6-8df0-9b9604166b87"
+     },
+     {
+      "description": "The Secure Software Development Framework (SSDF) is a set of fundamental,\nsound, and secure software development practices based on established\nsecure software development practice documents from organizations such as\nBSA, OWASP, and SAFECode. Few software development life cycle (SDLC) models\nexplicitly address software security in detail, so practices like those in\nthe SSDF need to be added to and integrated with each SDLC implementation.\nFollowing the SSDF practices should help software producers reduce the\nnumber of vulnerabilities in released software, reduce the potential impact\nof the exploitation of undetected or unaddressed vulnerabilities, and\naddress the root causes of vulnerabilities to prevent recurrences. Also,\nbecause the SSDF provides a common language for describing secure software\ndevelopment practices, software producers and acquirers can use it to foster\ntheir communications for procurement processes and other management activities.\n",
+      "implemented-requirements": [
+       {
+        "control-id": "ps1",
+        "description": "",
+        "props": [
+         {
+          "name": "Rule_Id",
+          "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
+          "value": "OSPS-QA-07.01"
+         }
+        ],
+        "uuid": "58049210-448a-4410-963f-e8da8b9b8255"
+       }
+      ],
+      "props": [
+       {
+        "name": "Framework_Short_Name",
+        "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
+        "value": "SSDF"
+       }
+      ],
+      "source": "https://csrc.nist.gov/pubs/sp/800/218/final",
+      "uuid": "7d18817b-d848-4cfe-b204-eca1f58c2b90"
+     }
+    ],
+    "description": "",
+    "props": [
+     {
+      "name": "Rule_Id",
+      "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
+      "remarks": "rule_set_0",
+      "value": "OSPS-QA-07.01"
+     },
+     {
+      "name": "Rule_Description",
+      "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
+      "remarks": "rule_set_0",
+      "value": "When a commit is made to the primary branch, the project's version\\ncontrol system MUST require at least one non-author approval of the\\nchanges before merging.\\n"
+     },
+     {
+      "name": "Parameter_Value_Default_0",
+      "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
+      "remarks": "rule_set_0",
+      "value": "1"
+     },
+     {
+      "name": "Parameter_Description_0",
+      "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
+      "remarks": "rule_set_0",
+      "value": "Minimum approvals on the default branch"
+     },
+     {
+      "name": "Parameter_Id_0",
+      "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
+      "remarks": "rule_set_0",
+      "value": "main_branch_min_approvals"
+     }
+    ],
+    "title": "GitHub Repository",
+    "type": "software",
+    "uuid": "1223698d-9e8b-4d49-b2c2-82b188791682"
+   },
+   {
+    "description": "",
+    "props": [
+     {
+      "name": "Rule_Id",
+      "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
+      "remarks": "rule_set_0",
+      "value": "OSPS-QA-07.01"
+     },
+     {
+      "name": "Check_Id",
+      "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
+      "remarks": "rule_set_0",
+      "value": "github_branch_protection"
+     },
+     {
+      "name": "Check_Description",
+      "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
+      "remarks": "rule_set_0",
+      "value": "The procedure performs an automated check of the branch ruleset\nstate in GitHub by creating a snapshot of the state from the API\nand checks the output with an OPA policy to ensure the outcome\nmeets the baseline requirement.\n"
+     }
+    ],
+    "title": "conforma",
+    "type": "validation",
+    "uuid": "340de96a-9c94-40f9-9082-d512907b9733"
+   }
+  ],
+  "metadata": {
+   "last-modified": "2025-10-27T19:57:57.900869832-04:00",
+   "oscal-version": "1.1.3",
+   "title": "Example",
+   "version": "0.1.0"
+  },
+  "uuid": "9b419ab6-23d8-4e8e-9618-1bfe8af370fd"
+ }
+}

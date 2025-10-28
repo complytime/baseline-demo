@@ -1,6 +1,6 @@
 plugins:
   conforma:
-    policy-templates: ./policy-templates/opa
+    policy-templates: ./checks/opa
     policy-output: ./policies/opa
     policy-results: ./policy-results/opa
     bundle-location: oci::ghcr.io/{{ ORG }}/opa-bundle:dev

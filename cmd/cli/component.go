@@ -10,13 +10,12 @@ import (
 	oscalTypes "github.com/defenseunicorns/go-oscal/src/types/oscal-1-1-3"
 	"github.com/goccy/go-yaml"
 	"github.com/ossf/gemara/layer2"
-	"github.com/ossf/gemara/layer3"
 	"github.com/ossf/gemara/layer4"
 	"github.com/spf13/cobra"
 )
 
 func NewComponentCommand() *cobra.Command {
-	var catalogPath, targetComponent, componentType, validatorID, evaluationsPath, policyPath string
+	var catalogPath, targetComponent, componentType, evaluationsPath, parametersPath string
 
 	command := &cobra.Command{
 		Use:   "component",
@@ -36,7 +35,13 @@ func NewComponentCommand() *cobra.Command {
 				return err
 			}
 
-			var allPlans []layer4.AssessmentPlan
+			parameters := make(component.Parameters)
+			if err := parameters.Load(parametersPath); err != nil {
+				return err
+			}
+
+			builder = builder.AddTargetComponent(targetComponent, componentType, layer2Catalog, parameters)
+
 			err = filepath.Walk(evaluationsPath, func(path string, info os.FileInfo, err error) error {
 
 				if info.IsDir() {
@@ -48,38 +53,17 @@ func NewComponentCommand() *cobra.Command {
 					return err
 				}
 
-				var assessmentPlans []layer4.AssessmentPlan
-				err = yaml.Unmarshal(content, &assessmentPlans)
+				var plan layer4.EvaluationPlan
+				err = yaml.Unmarshal(content, &plan)
 				if err != nil {
 					return err
 				}
 
-				allPlans = append(allPlans, assessmentPlans...)
+				builder = builder.AddValidationComponent(plan)
 				return nil
 			})
 
-			builder = builder.AddTargetComponent(targetComponent, componentType, layer2Catalog)
-			builder = builder.AddValidationComponent(validatorID, allPlans)
-
 			compDef := builder.Build()
-
-			if policyPath != "" {
-				cleanedPath := filepath.Clean(policyPath)
-				policyData, err := os.ReadFile(cleanedPath)
-				if err != nil {
-					return err
-				}
-
-				var layer3Policy layer3.PolicyDocument
-				err = yaml.Unmarshal(policyData, &layer3Policy)
-				if err != nil {
-					return err
-				}
-
-				for _, ref := range layer3Policy.ControlReferences {
-					builder = builder.AddParameterModifiers(ref.ReferenceId, ref.ParameterModifications)
-				}
-			}
 
 			oscalModels := oscalTypes.OscalModels{
 				ComponentDefinition: &compDef,
@@ -94,11 +78,10 @@ func NewComponentCommand() *cobra.Command {
 	}
 
 	flags := command.Flags()
-	flags.StringVarP(&catalogPath, "catalog-path", "c", "./src/catalogs/osps.yml", "Path to L2 catalog to transform")
-	flags.StringVarP(&evaluationsPath, "evaluations-path", "e", "./src/plans", "Path to Layer 4 evaluation plans")
+	flags.StringVarP(&catalogPath, "catalog-path", "c", "./governance/catalogs/osps.yml", "Path to L2 catalog to transform")
+	flags.StringVarP(&evaluationsPath, "evaluations-path", "e", "./governance/plans", "Path to Layer 4 evaluation plans")
 	flags.StringVarP(&targetComponent, "target-component", "t", "", "Title for target component for evaluation")
 	flags.StringVar(&componentType, "component-type", "software", "Component type (based on valid OSCAL component types)")
-	flags.StringVarP(&validatorID, "validator-id", "v", "", "Validation plugin id")
-	flags.StringVarP(&policyPath, "policy-path", "p", "./src/policy.yaml", "Path to Layer 3 policy")
+	flags.StringVarP(&parametersPath, "parameters-path", "p", "./governance/parameters.yaml", "Path to policy parameters")
 	return command
 }

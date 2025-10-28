@@ -1,0 +1,31 @@
+metadata:
+  id: OSPS-B-Plan
+  version: 0.1.0
+  author:
+    name: conforma
+    uri: https://github.com/conforma/cli
+  mapping-references:
+    - id: OSPS-B
+      title: Open Source Project Security Baseline
+      version: "2025-02-25"
+      url: https://baseline.openssf.org/versions/2025-02-25.html
+      description: |
+        The Open Source Project Security (OSPS) Baseline is a set of security criteria that projects 
+        should meet to demonstrate a strong security posture. The controls are organized by maturity level 
+        and category. In the detailed subsections you will find the control, rationale, and details notes.
+
+plans:
+  - control:
+      reference-id: OSPS=B
+      entry-id: OSPS-QA-07
+    assessments:
+      - requirement:
+          entry-id: OSPS-QA-07.01
+        procedures:
+          - id: "github_branch_protection"
+            name: "GitHub API Verifications for Branch Protection"
+            description: |
+              The procedure performs an automated check of the branch ruleset
+              state in GitHub by creating a snapshot of the state from the API
+              and checks the output with an OPA policy to ensure the outcome
+              meets the baseline requirement.
