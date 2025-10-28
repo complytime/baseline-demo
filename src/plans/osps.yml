@@ -1,21 +1,114 @@
-- control-id: OSPS-QA-03
+# Gemara Layer 4 Schema Compliant OSPS Configuration
+metadata:
+  id: "example-osps-evaluation-plan"
+  version: "1.0.0"
+  author:
+    name: "Example OSPS Baseline Demo"
+    uri: "https://github.com/ossf/gemara"
+    version: "1.0.0"
+    contact:
+      name: "Hannah Braswell"
+      primary: true
+      email: "demo@example.com"
+
+plans:
+- control:
+    reference-id: "OSPS-SA-01"
+    entry-id: "OSPS-SA-01"
+    strength: 8
+    remarks: "Security Assessment for Design Documentation of Released Software"
   assessments:
-    - requirement-id: OSPS-QA-03.01
+    - requirement:
+        reference-id: "OSPS-SA-01"
+        entry-id: "OSPS-SA-01.01"
+        strength: 8
+        remarks: "Design Documentation Validation Requirement"
       procedures:
-        - id: "github_branch_protection"
-          name: "GitHub API Verifications for Branch Protection"
+        - id: "openapi_design_validation"
+          name: "Required Design Documentation Validated by OpenAPI Analyzer"
           description: |
-            The procedure performs an automated check of the branch ruleset
+            The procedure performs an automated check of the design
+            documentation state in OpenAPI Analyzer by creating a snapshot of
+            the state from the API and checks the output with an OPA policy
+            to ensure the outcome meets the baseline requirement.
+          documentation: "https://github.com/marketplace/actions/openapi-analyzer"
+- control:
+    reference-id: "OSPS-SA-02"
+    entry-id: "OSPS-SA-02"
+    strength: 8
+    remarks: "Security Assessment for External API Documentation"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-SA-02"
+        entry-id: "OSPS-SA-02.01"
+        strength: 8
+        remarks: "Project API Documentation Validation Requirement"
+      procedures:
+        - id: "openapi_project_validation"
+          name: "Required Project Documentation Validated by OpenAPI Analyzer"
+          description: |
+            The procedure performs an automated check of the documentation
+            state in OpenAPI Analyzer by creating a snapshot of the state
+            from the API and checks the output with an OPA policy to ensure
+            the outcome meets the baseline requirement. Ensure that the software
+            interfaces (APIs) are documented for interaction and expected output.
+          documentation: "https://github.com/ossf/gemara/docs/openapi-analyzer"
+- control:
+    reference-id: "OSPS-SA-03"
+    entry-id: "OSPS-SA-03"
+    strength: 9
+    remarks: "Security Assessment for Code Analysis and Threat Modeling"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-SA-03"
+        entry-id: "OSPS-SA-03.01"
+        strength: 9
+        remarks: "CodeQL Analysis Validation Requirement"
+      procedures:
+        - id: "codeql_analysis_setup"
+          name: "Required CodeQL Analysis Defined for Repository"
+          description: |
+            The procedure performs an automated check of the codeql analysis
             state in GitHub by creating a snapshot of the state from the API
             and checks the output with an OPA policy to ensure the outcome
-            meets the baseline requirement. A rule in the GitHub Branch Protection
-            requires all quality checks to pass before a pull request can be merged
-            or committed to the primary branch.
-- control-id: OSPS-QA-04
-  assessments:
-    - requirement-id: OSPS-QA-04.01
+            meets the baseline requirement. The badges are added to the README.md
+            file.
+          documentation: "https://github.com/ossf/gemara/docs/codeql-analysis"
+    - requirement:
+        reference-id: "OSPS-SA-03"
+        entry-id: "OSPS-SA-03.02"
+        strength: 9
+        remarks: "Threat Modeling and Analysis Requirement"
       procedures:
-        - id: "subprojects_defined_with_badges"
+        - id: "threat_dragon_workflow_defined"
+          name: "Required Threat Dragon Workflow Defined in Repository"
+          description: |
+            The procedure performs an automated check of the threat modeling
+            state in Threat Dragon by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://github.com/OWASP/threat-dragon"
+        - id: "surface_analysis_defined"
+          name: "Required Surface Analysis Defined in Repository"
+          description: |
+            The procedure performs an automated check of the surface analysis
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://github.com/ossf/gemara/docs/surface-analysis"
+- control:
+    reference-id: "OSPS-QA-04"
+    entry-id: "OSPS-QA-04"
+    strength: 7
+    remarks: "Quality Assurance for Subproject Management"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-QA-04"
+        entry-id: "OSPS-QA-04.01"
+        strength: 7
+        remarks: "Subproject Health Monitoring Requirement"
+      procedures:
+        - id: "subproject_health_badges"
           name: "Subprojects Defined with Badges for Health"
           description: |
             The procedure performs an automated check of the subproject
@@ -24,21 +117,35 @@
             meets the baseline requirement.
             The procedure also checks for the existence of the subproject
             badges in the README.md file.
-    - requirement-id: OSPS-QA-04.02
+          documentation: "https://github.com/ossf/gemara/docs/subproject-badges"
+    - requirement:
+        reference-id: "OSPS-QA-04"
+        entry-id: "OSPS-QA-04.02"
+        strength: 7
+        remarks: "Subproject Strictness Configuration Requirement"
       procedures:
-        - id: "strictness_threshold_defined_for_subprojects"
+        - id: "subproject_strictness_config"
           name: "Subproject Strictness Threshold Defined"
           description: |
             The procedure performs an automated check of the subproject
             state in GitHub by creating a snapshot of the state from the API
             and checks the output with an OPA policy to ensure the outcome
             meets the baseline requirement. The strictness threshold is 
-            defined in the subproject's .github/settings.yml file.'
-- control-id: OSPS-QA-05
+            defined in the subproject's .github/settings.yml file.
+          documentation: "https://github.com/ossf/gemara/docs/subproject-strictness"
+- control:
+    reference-id: "OSPS-QA-05"
+    entry-id: "OSPS-QA-05"
+    strength: 8
+    remarks: "Quality Assurance for Source Control Management"
   assessments:
-    - requirement-id: OSPS-QA-05.01
+    - requirement:
+        reference-id: "OSPS-QA-05"
+        entry-id: "OSPS-QA-05.01"
+        strength: 8
+        remarks: "Generated Artifacts Management Requirement"
       procedures:
-        - id: "generated_artifacts_removed_from_source_control"
+        - id: "generated_artifacts_cleanup"
           name: "Generated Executable Artifacts Removed from Source Control"
           description: |
             The procedure performs an automated check of the generated
@@ -47,9 +154,14 @@
             OPA policy to ensure the outcome meets the baseline requirement.
             The procedure also checks for the existence of the generated
             artifacts in the source control.
-    - requirement-id: OSPS-QA-05.02
+          documentation: "https://github.com/ossf/gemara/docs/generated-artifacts"
+    - requirement:
+        reference-id: "OSPS-QA-05"
+        entry-id: "OSPS-QA-05.02"
+        strength: 8
+        remarks: "Binary File Management Requirement"
       procedures:
-        - id: "validate_binaries_gitignore"
+        - id: "binary_files_gitignore"
           name: "Validate unreviewable Binaries listed in Git Ignore"
           description: |
             The procedure performs an automated check of the unreviewable
@@ -58,45 +170,72 @@
             to ensure the outcome meets the baseline requirement.
             The procedure also checks for the existence of the unreviewable
             binaries in the source control.
-- control-id: OSPS-QA-06
+          documentation: "https://github.com/ossf/gemara/docs/binary-gitignore"
+- control:
+    reference-id: "OSPS-QA-06"
+    entry-id: "OSPS-QA-06"
+    strength: 9
+    remarks: "Quality Assurance for Testing and Coverage"
   assessments:
-    - requirement-id: OSPS-QA-06.01
+    - requirement:
+        reference-id: "OSPS-QA-06"
+        entry-id: "OSPS-QA-06.01"
+        strength: 9
+        remarks: "Test Coverage Validation Requirement"
       procedures:
-        - id: "sonarqube_coverage_defined"
+        - id: "sonarqube_coverage_check"
           name: "SonarQube Test Coverage Defined for Repository"
           description: |
             The procedure performs an automated check of the test coverage
             state in SonarQube by creating a snapshot of the state from the API
             and checks the output with an OPA policy to ensure the outcome
             meets the baseline requirement.
-    - requirement-id: OSPS-QA-06.02
+          documentation: "https://github.com/ossf/gemara/docs/sonarqube-coverage"
+    - requirement:
+        reference-id: "OSPS-QA-06"
+        entry-id: "OSPS-QA-06.02"
+        strength: 8
+        remarks: "Testing Procedures Validation Requirement"
       procedures:
-        - id: "openapi_analyzer_defined"
+        - id: "openapi_testing_validation"
           name: "Required Testing Procedures Validated by OpenAPI Analyzer"
           description: |
             The procedure performs an automated check of the documentation
             state in OpenAPI Analyzer by creating a snapshot of the state
             from the API and checks the output with an OPA policy to ensure
             the outcome meets the baseline requirement.
-    - requirement-id: OSPS-QA-06.03
+          documentation: "https://github.com/ossf/gemara/docs/openapi-testing"
+    - requirement:
+        reference-id: "OSPS-QA-06"
+        entry-id: "OSPS-QA-06.03"
+        strength: 8
+        remarks: "Breaking Changes Validation Requirement"
       procedures:
-        - id: "breaking_changes_validated_openapi"
+        - id: "openapi_breaking_changes_check"
           name: "Breaking Changes Validated by OpenAPI Analyzer"
           description: |
             The procedure performs an automated check of the documentation
             state in OpenAPI Analyzer by creating a snapshot of the state
             from the API and checks the output with an OPA policy to ensure
             the outcome meets the baseline requirement.
-- control-id: OSPS-QA-07
+          documentation: "https://github.com/ossf/gemara/docs/breaking-changes"
+- control:
+    reference-id: "OSPS-QA-07"
+    entry-id: "OSPS-QA-07"
+    strength: 9
+    remarks: "Quality Assurance for Advanced Branch Protection"
   assessments:
-    - requirement-id: OSPS-QA-07.01
+    - requirement:
+        reference-id: "OSPS-QA-07"
+        entry-id: "OSPS-QA-07.01"
+        strength: 9
+        remarks: "Advanced Branch Protection Validation Requirement"
       procedures:
-        - id: "github_branch_protection"
+        - id: "advanced_branch_protection"
           name: "GitHub API Verifications for Branch Protection"
           description: |
             The procedure performs an automated check of the branch ruleset
             state in GitHub by creating a snapshot of the state from the API
             and checks the output with an OPA policy to ensure the outcome
             meets the baseline requirement.
-            
-            
+          documentation: "https://github.com/ossf/gemara/docs/github-branch-protection"
