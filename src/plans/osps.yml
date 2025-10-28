@@ -13,6 +13,93 @@ metadata:
 
 plans:
 - control:
+    reference-id: "OSPS-LE-01"
+    entry-id: "OSPS-LE-01"
+    strength: 8
+    remarks: "Security Assessment for Legal Open Source Compliance"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-LE-01"
+        entry-id: "OSPS-LE-01.01"
+        strength: 8
+        remarks: "Contributors Signing Legal Agreement Requirement"
+      procedures:
+        - id: "contributor_license_agreement_enforced"
+          name: "Required Contributors Signed Legal Agreement on PR"
+          description: |
+            The procedure performs an automated check of the contributors
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement. Usage of a tool like CLA Assistant
+            to enable contributors to sign the agreement.
+          documentation: "https://github.com/ossf/gemara/docs/contributors-sign-legal-agreement"
+- control:
+    reference-id: "OSPS-LE-02"
+    entry-id: "OSPS-LE-02"
+    strength: 8
+    remarks: "Security Assessment for Open Source License Compliance"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-LE-02"
+        entry-id: "OSPS-LE-02.01"
+        strength: 8
+        remarks: "License MUST conform to OSI Open Source or FSF Definition"
+      procedures:
+        - id: "license_validation_enforced"
+          name: "Required Licenses Conform to OSI or FSF Definition"
+          description: |
+            The procedure performs an automated check of the license state
+            in GitHub by creating a snapshot of the state from the API and
+            checks the output with an OPA policy to ensure the outcome meets
+            the baseline requirement.
+    - requirement:
+        reference-id: "OSPS-LE-02"
+        entry-id: "OSPS-LE-02.02"
+        strength: 8
+        remarks: "Released Software License Conformance to OSI or FSF Definition"
+      procedures:
+        - id: "license_definition_enforced"
+          name: "Released Software Licenses Conform to OSI or FSF Definition"
+          description: |
+            The procedure performs an automated check of the license state
+            of released software in GitHub by creating a snapshot of the 
+            state from the API and checks the output with an OPA policy to 
+            ensure the outcome meets the baseline requirement.
+- control:
+    reference-id: "OSPS-LE-03"
+    entry-id: "OSPS-LE-03"
+    strength: 8
+    remarks: "Security Assessment for Appropriate Licensed Software Distribution"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-LE-03"
+        entry-id: "OSPS-LE-03.01"
+        strength: 8
+        remarks: "Source Code License Maintenance Requirement"
+      procedures:
+        - id: "license_file_enforced"
+          name: "License File Present in Source Code Repository"
+          description: |
+            The procedure performs an automated check of the source code
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement. Ensures that the source code
+            includes the required LICENSE file.
+    - requirement:
+        reference-id: "OSPS-LE-03"
+        entry-id: "OSPS-LE-03.02"
+        strength: 8
+        remarks: "Released Source Code License Maintenance Requirement"
+        procedures:
+          - id: "released_source_code_license_enforced"
+            name: "Released Source Code Licenses Maintained"
+            description: |
+              The procedure performs an automated check of te source code
+              state in GitHub by creating a snapshot of the state from the API
+              and checks the output with an OPA policy to ensure the outcome
+              meets the baseline requirement. Ensures that the released source
+              code includes the required LICENSE file.
+- control:
     reference-id: "OSPS-SA-01"
     entry-id: "OSPS-SA-01"
     strength: 8
