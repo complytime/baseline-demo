@@ -328,6 +328,141 @@ plans:
             committed.
           documentation: "https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets"
 - control:
+    reference-id: "OSPS-DO-01"
+    entry-id: "OSPS-DO-01"
+    strength: 8
+    remarks: "Security Assessment of User Documentation"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-DO-01"
+        entry-id: "OSPS-DO-01.01"
+        strength: 8
+        remarks: "Required User Documentation for Released Software"
+      procedures:
+        - id: "user_documentation_enforced"
+          name: "Required User Documentation for Released Software Enforced"
+          description: |
+            The procedure performs an automated check of the user documentation
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://github.com/marketplace/actions/yamllint-github-action"
+- control:
+    reference-id: "OSPS-DO-02"
+    entry-id: "OSPS-DO-02"
+    strength: 8
+    remarks: "Contributing Guidelines for Issues Documented"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-DO-02"
+        entry-id: "OSPS-DO-02.01"
+        strength: 8
+        remarks: "Contributing Guidelines for Issue Reporting Documented"
+      procedures:
+        - id: "contributing_guide_enforced"
+          name: "Contributing Guidelines for Issue Reporting Enforced"
+          description: |
+            The procedure performs an automated check of the contributing
+            guide state in GitHub by creating a snapshot of the state from the
+            API and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"
+- control:
+    reference-id: "OSPS-DO-03"
+    entry-id: "OSPS-DO-03"
+    strength: 8
+    remarks: "Security Assessment of Released Software Authenticity Validation"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-DO-03"
+        entry-id: "OSPS-DO-03.01"
+        strength: 8
+        remarks: "Released Software Includes Documentation of Authentic Expected Outcomes"
+      procedures:
+        - id: "build_requirements_documented"
+          name: "Software Build Requirements Documented in Quick Start Guide"
+          description: |
+            The procedure performs an automated check of the build requirements
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://docs.github.com/en/contributing/style-guide-and-content-model/quickstart-content-type"
+    - requirement:
+        reference-id: "OSPS-DO-03"
+        entry-id: "OSPS-DO-03.02"
+        strength: 8
+        remarks: "Released Software Includes Documentation of Required Signing Commits"
+      procedures:
+        - id: "signed_commits_enforced"
+          name: "Enforcement of Signed Commits for Released Software"
+          description: |
+            The procedure performs an automated check of the signed commits
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits"
+- control:
+    reference-id: "OSPS-DO-04"
+    entry-id: "OSPS-DO-04"
+    strength: 8
+    remarks: "Project Documentation of Support Lifecycle Requirement"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-DO-04"
+        entry-id: "OSPS-DO-04.01"
+        strength: 8
+        remarks: "Project Documentation of Release Lifecycle Management Support"
+      procedures:
+        - id: "security_policy_enforced"
+          name: "Security Policy Enforced"
+          description: |
+            The procedure performs an automated check of the SECURITY.md
+            policy state in GitHub by creating a snapshot of the state from the
+            API and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository"
+- control:
+    reference-id: "OSPS-DO-05"
+    entry-id: "OSPS-DO-05"
+    strength: 8
+    remarks: "Documentation of Security Vulnerability Management"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-DO-05"
+        entry-id: "OSPS-DO-05.01"
+        strength: 8
+        remarks: "Project Documentation of Security Vulnerability Management in SUPPORT.md"
+      procedures:
+        - id: "support_policy_enforced"
+          name: "Support Policy Enforced in SUPPORT.md"
+          description: |
+            The procedure performs an automated check of the SUPPORT.md
+            policy state in GitHub by creating a snapshot of the state from the
+            API and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax"
+- control:
+    reference-id: "OSPS-DO-06"
+    entry-id: "OSPS-DO-06"
+    strength: 8
+    remarks: "Security Assessment of Project Documenting Dependency Tracking"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-DO-06"
+        entry-id: "OSPS-DO-06.01"
+        strength: 8
+        remarks: "Dependency Management Documentation Requirement"
+      procedures:
+        - id: "dependecy_management_documented"
+          name: "Dependency Management Documentation Enforced"
+          description: |
+            This procedure performs an automated check of the dependency
+            management documentation state in GitHub by creating a snapshot of
+            the state from the API and checks the output with an OPA policy to
+            ensure the outcome meets the baseline requirement. Dependency graph
+            should be enabled for viewing project dependencies.
+          documentation: "https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/exploring-the-dependencies-of-a-repository"
+- control:
     reference-id: "OSPS-LE-01"
     entry-id: "OSPS-LE-01"
     strength: 8
