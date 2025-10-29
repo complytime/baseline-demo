@@ -52,10 +52,10 @@ jobs:
         run: sed -i "s/{{ ORG }}/$ORG/g" configs/c2p-config.yaml
 
       - name: Aggregate results
-        run: c2pcli result2oscal -c configs/c2p-config.yaml  -d ./compliance/component-definition.json -n "${FRAMEWORK}" -p $(go env GOPATH)/bin
+        run: c2pcli result2oscal -c configs/c2p-config.yaml -n "${FRAMEWORK}" -p $(go env GOPATH)/bin
 
       # Post summary on GitHub action summary
       - name: Summary
         run: |
           wget https://raw.githubusercontent.com/usnistgov/oscal-content/refs/heads/main/nist.gov/SP800-218/ver1/json/NIST_SP800-218_ver1_catalog.json -O catalog.json
-          c2pcli oscal2posture -c configs/c2p-config.yaml -r assessment-results.json -d ./compliance/component-definition.json -n "${FRAMEWORK}" --catalog catalog.json >> $GITHUB_STEP_SUMMARY
+          c2pcli oscal2posture -c configs/c2p-config.yaml -r assessment-results.json -n "${FRAMEWORK}" --catalog catalog.json >> $GITHUB_STEP_SUMMARY

@@ -1,3 +1,4 @@
+component-definition: ./compliance/component-definitions/github-repo/component-definition.json
 plugins:
   conforma:
     policy-templates: ./checks/opa

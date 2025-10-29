@@ -52,7 +52,7 @@ jobs:
         run: sed -i "s/{{ ORG }}/$ORG/g" configs/c2p-config.yaml
 
       - name: Generate policy bundle
-        run: c2pcli oscal2policy -c configs/c2p-config.yaml -d ./compliance/component-definition.json -n "${FRAMEWORK}" -p $(go env GOPATH)/bin
+        run: c2pcli oscal2policy -c configs/c2p-config.yaml -n "${FRAMEWORK}" -p $(go env GOPATH)/bin
 
       - uses: actions/upload-artifact@v4
         with:
