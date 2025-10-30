@@ -776,3 +776,179 @@ plans:
             and checks the output with an OPA policy to ensure the outcome
             meets the baseline requirement.
           documentation: "https://github.com/ossf/gemara/docs/github-branch-protection"
+- control:
+    reference-id: "OSPS-VM-01"
+    entry-id: "OSPS-VM-01"
+    strength: 9
+    remarks: "Security Assessment for Reporting and Addressing Vulnerabilities"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-VM-01"
+        entry-id: "OSPS-VM-01.01"
+        strength: 9
+        remarks: "Security Vulnerability Disclosure Policy Validation Requirement"
+      procedures:
+        - id: "security_vulnerability_policy_enforced"
+          name: "Security Vulnerability Disclosure Policy Enforced in SECURITY.md"
+          description: |
+            The procedure performs an automated check of the security vulnerability
+            disclosure policy state in GitHub by creating a snapshot of the
+            state from the API and checks the output with an OPA policy to
+            ensure the outcome meets the baseline requirement.
+          documentation: "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository"
+- control:
+    reference-id: "OSPS-VM-02"
+    entry-id: "OSPS-VM-02"
+    strength: 9
+    remarks: "Security Assessment for Published Process and Contacts for Escalated Vulnerabilities"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-VM-02"
+        entry-id: "OSPS-VM-02.01"
+        strength: 9
+        remarks: "Security Vulnerability Escalation Contacts Documented Requirement"
+      procedures:
+        - id: security_vulnerability_escalation_contacts_defined
+          name: "Security Vulnerability Escalation Contacts Defined in SECURITY.md"
+          description: |
+            The procedure performs an automated check of the security vulnerability
+            escalation contacts state in GitHub by creating a snapshot of the
+            state from the API and checks the output with an OPA policy to
+            ensure the outcome meets the baseline requirement.
+          documentation: "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file"
+- control:
+    reference-id: "OSPS-VM-03"
+    entry-id: "OSPS-VM-03"
+    strength: 9
+    remarks: "Security Assessment for Timely Reporting of Private Security Vulnerabilities"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-VM-03"
+        entry-id: "OSPS-VM-03.01"
+        strength: 9
+        remarks: "Private Vulnerability Reporting Process for Security Researchers"
+      procedures:
+        - id: "codeql_security_report_actions_defined"
+          name: "Required CodeQL Security Report Actions Defined in Repository for Researchers"
+          description: |
+            The procedure performs an automated check of the codeql security
+            report actions state in GitHub by creating a snapshot of the
+            state from the API and checks the output with an OPA policy to
+            ensure the outcome meets the baseline requirement.
+          documentation: "https://github.com/github/codeql-action"
+- control:
+    reference-id: "OSPS-VM-04"
+    entry-id: "OSPS-VM-04"
+    strength: 9
+    remarks: "Security Assessment for Validation of Project Consumer Awareness of Known Vulnerabilities"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-VM-04"
+        entry-id: "OSPS-VM-04.01"
+        strength: 9
+        remarks: "Discovered Vulnerability Disclosure Policy Validation Requirement"
+      procedures:
+        - id: "scanning_tool_badges_configured"
+          name: "Discovered Vulnerability Disclosure Policy Defined in README.md as Badges"
+          description: |
+            The procedure performs an automated check of the scanning tool
+            badges state in GitHub by creating a snapshot of the state from the
+            API and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://docs.github.com/en/code-security/code-scanning/managing-your-code-scanning-configuration/about-the-tool-status-page"
+    - requirement:
+        reference-id: "OSPS-VM-04"
+        entry-id: "OSPS-VM-04.02"
+        strength: 9
+        remarks: "VEX Validation Requirement for Known Vulnerabilities"
+      procedures:
+        - id: "vex_validation_documented"
+          name: "VEX Feed Documented for Exploitable Known Vulnerabilities"
+          description: |
+            The procedure performs an automated check of the VEX feed state
+            in GitHub by creating a snapshot of the state from the API and
+            checks the output with an OPA policy to ensure the outcome meets
+            the baseline requirement.
+          documentation: "https://github.com/openvex"
+- control:
+    reference-id: "OSPS-VM-05"
+    entry-id: "OSPS-VM-05"
+    strength: 9
+    remarks: "Security Assessment for SCA Remediation Threshold for Findings and Vulnerabilities"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-VM-05"
+        entry-id: "OSPS-VM-05.01"
+        strength: 9
+        remarks: "Defined Threshold for SCA Findings and Vulnerabilities in Policy"
+      procedures:
+        - id: "dependabot_scanning_threshold_defined"
+          name: "Dependabot SCA Findings and Vulnerabilities Threshold Defined in Policy and Alerts"
+          description: |
+            The procedure performs an automated check of the dependabot scanning
+            threshold state in GitHub by creating a snapshot of the state from
+            the API and checks the output with an OPA policy to ensure the
+            outcome meets the baseline requirement.
+          documentation: "https://docs.github.com/en/code-security/dependabot/dependabot-alerts/configuring-dependabot-alerts"
+    - requirement:
+        reference-id: "OSPS-VM-05"
+        entry-id: "OSPS-VM-05.02"
+        strength: 9
+        remarks: "Defined Policy Addressing SCA Findings Pre-release"
+      procedures:
+        - id: "sca_analysis_policy_defined"
+          name: "SCA Analysis Policy Defined for Pre-release"
+          description: |
+            The procedure performs an automated check of the sca analysis
+            policy state in GitHub by creating a snapshot of the state from
+            the API and checks the output with an OPA policy to ensure the
+            outcome meets the baseline requirement.
+          documentation: "https://www.sonatype.com/"
+    - requirement:
+        reference-id: "OSPS-VM-05"
+        entry-id: "OSPS-VM-05.03"
+        strength: 9
+        remarks: "Status Check for SCA Findings and Vulnerabilities Enforced in Policy"
+      procedures:
+        - id: "sca_analysis_status_check_defined"
+          name: "SCA Analysis Status Check Defined in Policy"
+          description: |
+            The procedure performs an automated check of the sca analysis
+            status check state in GitHub by creating a snapshot of the state
+            from the API and checks the output with an OPA policy to ensure
+            the outcome meets the baseline requirement.
+          documentation: "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks"
+- control:
+    reference-id: "OSPS-VM-06"
+    entry-id: "OSPS-VM-06"
+    strength: 9
+    remarks: "Security Assessment for SCA Remediation Threshold for Findings and Vulnerabilities"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-VM-06"
+        entry-id: "OSPS-VM-06.01"
+        strength: 9
+        remarks:
+      procedures:
+        - id: "sast_findings_threshold_defined"
+          name: "SAST Findings Threshold Defined in Policy and Alerts"
+          description: |
+            The procedure performs an automated check of the sast findings
+            threshold state in GitHub by creating a snapshot of the state
+            from the API and checks the output with an OPA policy to ensure
+            the outcome meets the baseline requirement.
+          documentation: "https://github.com/SonarSource/sonarqube"
+    - requirement:
+        reference-id: "OSPS-VM-06"
+        entry-id: "OSPS-VM-06.02"
+        strength: 9
+        remarks: "Status Check for SAST Findings Enforced in Policy"
+      procedures:
+        - id: "sast_status_check_defined"
+          name: "SAST Status Check Defined in Policy Based on Threshold"
+          description: |
+            The procedure performs an automated check of the sast status check
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://github.com/SonarSource/sonarqube"
