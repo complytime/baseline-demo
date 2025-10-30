@@ -463,6 +463,117 @@ plans:
             should be enabled for viewing project dependencies.
           documentation: "https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/exploring-the-dependencies-of-a-repository"
 - control:
+    reference-id: "OSPS-GV-01"
+    entry-id: "OSPS-GV-01"
+    strength: 8
+    remarks: "Security Assessment of Project Documenting Roles and Responsibilities"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-GV-01"
+        entry-id: "OSPS-GV-01.01"
+        strength: 8
+        remarks: "Project Roles and Responsibilities Documented"
+      procedures:
+       - id: "project_roles_documented"
+         name: "Project Roles and Responsibilities Documented"
+         description: |
+           The procedure performs an automated check of the project roles
+           state in GitHub by creating a snapshot of the state from the API
+           and checks the output with an OPA policy to ensure the outcome
+           meets the baseline requirement.
+         documentation: "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"
+    - requirement:
+        reference-id: "OSPS-GV-01"
+        entry-id: "OSPS-GV-01.02"
+        strength: 8
+        remarks: "Project Roles and Responsibilities Documented in Policy"
+      procedures:
+        - id: "governance_document_exists"
+          name: "Project Member Roles and Responsibilities Documented in GOVERNANCE.md"
+          description: |
+            The procedure performs an automated check of the project roles
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://governance.md/"
+- control:
+    reference-id: "OSPS-GV-02"
+    entry-id: "OSPS-GV-02"
+    strength: 8
+    remarks: "Security Assessment of Project Community Governance"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-GV-02"
+        entry-id: "OSPS-GV-02.01"
+        strength: 8
+        remarks: "Project Community Guidelines Documented"
+      procedures:
+        - id: "communication_mechanisms_documented"
+          name: "Project Communication Mechanism Documented"
+          description: |
+            The procedure performs an automated check of the communication
+            mechanisms state in GitHub by creating a snapshot of the state
+            from the API and checks the output with an OPA policy to ensure
+            the outcome meets the baseline requirement.
+          documentation: "https://www.linuxfoundation.org/resources/open-source-guides/starting-an-open-source-project"
+- control:
+    reference-id: "OSPS-GV-03"
+    entry-id: "OSPS-GV-03"
+    strength: 8
+    remarks: "Security Assessment of Project Contribution Guidelines"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-GV-03"
+        entry-id: "OSPS-GV-03.01"
+        strength: 8
+        remarks: "Project Contributor Guidelines Documented"
+      procedures:
+        - id: "contributor_guidelines_documented"
+          name: "Project Contributor Guide Exists as CONTRIBUTING.md"
+          description: |
+            The procedure performs an automated check of the contributor
+            guidelines state in GitHub by creating a snapshot of the state
+            from the API and checks the output with an OPA policy to ensure
+            the outcome meets the baseline requirement.
+          documentation: "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"
+    - requirement:
+        reference-id: "OSPS-GV-03"
+        entry-id: "OSPS-GV-03.02"
+        strength: 8
+        remarks: "Acceptable Contribution Guidelines Documented"
+      procedures:
+        - id: "code_contribution_guidelines_documented"
+          name: "Code Contribution Guide Exists in CONTRIBUTING.md"
+          description: |
+            The procedure performs an automated check of the contributor
+            guidelines state in GitHub by creating a snapshot of the state
+            from the API and checks the output with an OPA policy to ensure
+            the outcome meets the baseline requirement.
+          documentation: "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"
+- control:
+    reference-id: "OSPS-GV-04"
+    entry-id: "OSPS-GV-04"
+    strength: 8
+    remarks: "Security Assessment of Contributor Privileges"
+  assessments:
+    - requirement:
+        reference-id: "OSPS-GV-04"
+        entry-id: "OSPS-GV-04.01"
+        strength: 8
+        remarks: "Project Contributor Privilege Guidelines Documented"
+      procedures:
+        - id: "contributor_privileges_documented"
+          name: "Project Contributor Privileges Documented in CONTRIBUTING.md"
+          description: |
+            The procedure performs an automated check of the contributor
+            guidelines state in GitHub by creating a snapshot of the state
+            from the API and checks the output with an OPA policy to ensure
+            the outcome meets the baseline requirement. Code collaborators
+            and new contributors must be granted access to escalated
+            privileges. There is a formalized procedure for granting access
+            based on the type and frequency of contributions.
+          documentation: "https://opensource.guide/leadership-and-governance/"
+- control:
     reference-id: "OSPS-LE-01"
     entry-id: "OSPS-LE-01"
     strength: 8
