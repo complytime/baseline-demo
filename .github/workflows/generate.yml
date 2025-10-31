@@ -1,4 +1,4 @@
-name: Generate
+name: Generate "lowercase" policy
 
 on:
   workflow_dispatch:
@@ -6,12 +6,11 @@ on:
     branches:
       - 'main'
     paths:
-      - policy-templates/**
+      - checks/**
 
 permissions: {}
 
 env:
-  COMPDEF: "component-definition-${{ github.run_id }}.json"
   FRAMEWORK: "SSDF"
 
 jobs:
@@ -44,10 +43,8 @@ jobs:
       - name: Install C2P plugins
         uses: ./.github/actions/install-conforma-plugin
 
-      - name: Create Component Definition
-        run: |
-          go build -C cmd/  -o ../gemara-transformer
-          ./gemara-transformer component -t "GitHub Repository" -v "conforma" > "${COMPDEF}"
+      - name: Setup dirs
+        run: mkdir -p policies/opa policy-results/opa
 
       - name: Add GitHub ORG to config
         env:
@@ -55,13 +52,7 @@ jobs:
         run: sed -i "s/{{ ORG }}/$ORG/g" configs/c2p-config.yaml
 
       - name: Generate policy bundle
-        run: c2pcli oscal2policy -c configs/c2p-config.yaml -d "${COMPDEF}" -n "${FRAMEWORK}" -p $(go env GOPATH)/bin
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: component-definition
-          path: ${{ env.COMPDEF }}
-          retention-days: 5
+        run: c2pcli oscal2policy -c configs/c2p-config.yaml -n "${FRAMEWORK}" -p $(go env GOPATH)/bin
 
       - uses: actions/upload-artifact@v4
         with:

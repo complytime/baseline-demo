@@ -1,4 +1,4 @@
-name: Report
+name: Create Compliance Report
 
 on:
   workflow_dispatch:
@@ -9,7 +9,6 @@ on:
 permissions: {}
 
 env:
-  COMPDEF: "component-definition-${{ github.run_id }}.json"
   FRAMEWORK: "SSDF"
 
 jobs:
@@ -33,18 +32,18 @@ jobs:
           cache: false
           check-latest: true
 
+      - name: Setup dirs
+        run: mkdir -p policies/opa policy-results/opa
+
       - name: Setup c2pcli
         uses: jpower432/c2p-actions/actions/setup-c2pcli@0bc42f492f3a6854fe0afc99c50100db8f5e17c6 # main
+        with:
+          c2p-version: 'main'
 
       - name: Install C2P plugins
         uses: ./.github/actions/install-conforma-plugin
 
       - uses: ./.github/actions/run-checks
-
-      - name: Create Component Definition
-        run: |
-          go build -C cmd/  -o ../gemara-transformer
-          ./gemara-transformer component -t "GitHub Repository" -v "conforma" > "${COMPDEF}"
 
       - name: Add GitHub ORG to config
         env:
@@ -52,16 +51,10 @@ jobs:
         run: sed -i "s/{{ ORG }}/$ORG/g" configs/c2p-config.yaml
 
       - name: Aggregate results
-        run: c2pcli result2oscal -c configs/c2p-config.yaml  -d "${COMPDEF}" -n "${FRAMEWORK}" -p $(go env GOPATH)/bin
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: component-definition
-          path: ${{ env.COMPDEF }}
-          retention-days: 5
+        run: c2pcli result2oscal -c configs/c2p-config.yaml -n "${FRAMEWORK}" -p $(go env GOPATH)/bin
 
       # Post summary on GitHub action summary
       - name: Summary
         run: |
           wget https://raw.githubusercontent.com/usnistgov/oscal-content/refs/heads/main/nist.gov/SP800-218/ver1/json/NIST_SP800-218_ver1_catalog.json -O catalog.json
-          c2pcli oscal2posture -c configs/c2p-config.yaml -r assessment-results.json -d "${COMPDEF}" -n "${FRAMEWORK}" --catalog catalog.json >> $GITHUB_STEP_SUMMARY
+          c2pcli oscal2posture -c configs/c2p-config.yaml -r assessment-results.json -n "${FRAMEWORK}" --catalog catalog.json --table >> $GITHUB_STEP_SUMMARY

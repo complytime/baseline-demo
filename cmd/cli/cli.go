@@ -9,6 +9,6 @@ func New() *cobra.Command {
 		Use:   "transform",
 		Short: "transform CLI",
 	}
-	command.AddCommand(NewComponentCommand(), NewCatalogCommand(), NewPlanCommand())
+	command.AddCommand(NewComponentCommand())
 	return command
 }
