@@ -879,7 +879,7 @@ plans:
         strength: 9
         remarks: "Advanced Branch Protection Validation Requirement"
       procedures:
-        - id: "advanced_branch_protection"
+        - id: "github_branch_protection"
           name: "GitHub API Verifications for Branch Protection"
           description: |
             The procedure performs an automated check of the branch ruleset
