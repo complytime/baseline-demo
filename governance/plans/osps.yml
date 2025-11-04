@@ -22,13 +22,13 @@ metadata:
         the detailed subsections you will find the control, rationale, and notes.
 plans:
 - control:
-    reference-id: "OSPS-AC-01"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-AC-01"
     strength: 8
     remarks: "Security Assessment for Required Multi-factor Authentication"
   assessments:
     - requirement:
-        reference-id: "OSPS-AC-01"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-AC-01.01"
         strength: 8
         remarks: "Multi-factor Authentication Requirement"
@@ -42,13 +42,13 @@ plans:
             meets the baseline requirement.
           documentation: "https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication"
 - control:
-    reference-id: "OSPS-AC-02"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-AC-02"
     strength: 8
     remarks: "Security Assessment for Rule of Least Privilege"
   assessments:
     - requirement:
-        reference-id: "OSPS-AC-02"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-AC-02.01"
         strength: 8
         remarks: "Rule of Least Privilege Requirement for Contributors"
@@ -63,13 +63,13 @@ plans:
             evaluation of roles and permissions.
           documentation: "https://docs.github.com/en/actions/reference/security/secure-use#using-codeowners-to-monitor-changes"
 - control:
-    reference-id: "OSPS-AC-03"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-AC-03"
     strength: 8
     remarks: "Security Assessment for Primary Branch Protection"
   assessments:
     - requirement:
-        reference-id: "OSPS-AC-03"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-AC-03.01"
         strength: 8
         remarks: "Primary Branch Protection Requirements"
@@ -83,7 +83,7 @@ plans:
             the outcome meets the baseline requirement.
           documentation: "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests"
     - requirement:
-        reference-id: "OSPS-AC-03"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-AC-03.02"
         strength: 8
         remarks: "Primary Branch Deletion Protection Requirement"
@@ -97,13 +97,13 @@ plans:
             the outcome meets the baseline requirement.
           documentation: "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests"
 - control:
-    reference-id: "OSPS-AC-04"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-AC-04"
     strength: 8
     remarks: "Security Assessment for CI/CD Pipeline Permissions"
   assessments:
     - requirement:
-        reference-id: "OSPS-AC-04"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-AC-04.01"
         strength: 8
         remarks: "Required CI/CD Pipeline Permissions Limited"
@@ -117,7 +117,7 @@ plans:
             the outcome meets the baseline requirement.
           documentation: "https://docs.github.com/en/enterprise-cloud@latest/enterprise-onboarding/github-actions-for-your-enterprise/getting-started-with-github-actions-for-github-enterprise-cloud"
     - requirement:
-        reference-id: "OSPS-AC-04"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-AC-04.02"
         strength: 8
         remarks: "CI/CD Pipeline Permissions Enforced for Lowest Privilege"
@@ -132,13 +132,13 @@ plans:
             principle of least privilege for the CI/CD pipeline permissions.
           documentation: "https://docs.github.com/en/enterprise-cloud@latest/enterprise-onboarding/github-actions-for-your-enterprise/getting-started-with-github-actions-for-github-enterprise-cloud"
 - control:
-    reference-id: "OSPS-BR-01"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-BR-01"
     strength: 8
     remarks: "Security Assessment for Build and Release Pipelines"
   assessments:
     - requirement:
-        reference-id: "OSPS-BR-01"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-BR-01.01"
         strength: 8
         remarks: "Build and Release Pipeline Access Security Requirement"
@@ -152,7 +152,7 @@ plans:
             meets the baseline requirement.
           documentation: "https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication"
     - requirement:
-        reference-id: "OSPS-BR-01"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-BR-01.02"
         strength: 8
         remarks: "Build and Release Pipeline Branch Sanitation Security Requirement"
@@ -166,13 +166,13 @@ plans:
             outcome meets the baseline requirement.
           documentation: "https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication"
 - control:
-    reference-id: "OSPS-BR-02"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-BR-02"
     strength: 8
     remarks: "Security Assessment for Asset Version Management"
   assessments:
     - requirement:
-        reference-id: "OSPS-BR-02"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-BR-02.01"
         strength: 8
         remarks: "Security Assessment for Release Identifier Management"
@@ -186,7 +186,7 @@ plans:
             OPA policy to ensure the outcome meets the baseline requirement.
           documentation: "https://github.com/marketplace/actions/git-semantic-version"
     - requirement:
-        reference-id: "OSPS-BR-02"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-BR-02.02"
         strength: 8
         remarks: "Security Assessment for Asset Defined Versioning Scheme"
@@ -200,13 +200,13 @@ plans:
             OPA policy to ensure the outcome meets the baseline requirement.
           documentation: "https://github.com/marketplace/actions/git-semantic-version"
 - control:
-    reference-id: "OSPS-BR-03"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-BR-03"
     strength: 8
     remarks: "Security Assessment for Encryption of URIs"
   assessments:
     - requirement:
-        reference-id: "OSPS-BR-03"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-BR-03.01"
         strength: 8
         remarks: "Encryption of URIs Requirement"
@@ -223,7 +223,7 @@ plans:
             CI/CD pipeline authentication.
           documentation: "https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-as-a-github-app-installation"
     - requirement:
-        reference-id: "OSPS-BR-03"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-BR-03.02"
         strength: 8
         remarks: "Encryption of URIs Requirement"
@@ -240,13 +240,13 @@ plans:
             CI/CD pipeline authentication.
           documentation: "https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-as-a-github-app-installation"
 - control:
-    reference-id: "OSPS-BR-04"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-BR-04"
     strength: 8
     remarks: "Security Assessment for Release Decisions"
   assessments:
     - requirement:
-        reference-id: "OSPS-BR-04"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-BR-04.01"
         strength: 8
         remarks: "Release CHANGELOG Security Requirement Enforced"
@@ -260,13 +260,13 @@ plans:
             meets the baseline requirement.
           documentation: "https://github.com/marketplace/actions/release-please-action"
 - control:
-    reference-id: "OSPS-BR-05"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-BR-05"
     strength: 8
     remarks: "Security Assessment for Managed Dependencies"
   assessments:
     - requirement:
-        reference-id: "OSPS-BR-05"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-BR-05.01"
         strength: 8
         remarks: "Security Assessment for Managing Package Dependencies"
@@ -280,13 +280,13 @@ plans:
             meets the baseline requirement.
           documentation: "https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions"
 - control:
-    reference-id: "OSPS-BR-06"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-BR-06"
     strength: 8
     remarks: "Security Assessment for Signed Manifests and Hashes"
   assessments:
     - requirement:
-        reference-id: "OSPS-BR-06"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-BR-06.01"
         strength: 8
         remarks: "Signed Manifests and Hashes Requirement for Releases"
@@ -300,13 +300,13 @@ plans:
             meets the baseline requirement.
           documentation: "https://github.com/marketplace/actions/release-please-manifest-action"
 - control:
-    reference-id: "OSPS-BR-07"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-BR-07"
     strength: 8
     remarks: "Security Assessment for Secrets and Credentials"
   assessments:
     - requirement:
-        reference-id: "OSPS-BR-07"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-BR-07.01"
         strength: 8
         remarks: "Secrets and Credentials Requirement for Releases"
@@ -321,7 +321,7 @@ plans:
             with pre-commit hooks for ensuring that secrets are not committed.
           documentation: "https://docs.github.com/en/get-started/git-basics/ignoring-files"
     - requirement:
-        reference-id: "OSPS-BR-07"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-BR-07.02"
         strength: 8
         remarks: "Secrets and Credentials Requirement for Releases Documented"
@@ -337,13 +337,13 @@ plans:
             committed.
           documentation: "https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets"
 - control:
-    reference-id: "OSPS-DO-01"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-DO-01"
     strength: 8
     remarks: "Security Assessment of User Documentation"
   assessments:
     - requirement:
-        reference-id: "OSPS-DO-01"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-DO-01.01"
         strength: 8
         remarks: "Required User Documentation for Released Software"
@@ -357,13 +357,13 @@ plans:
             meets the baseline requirement.
           documentation: "https://github.com/marketplace/actions/yamllint-github-action"
 - control:
-    reference-id: "OSPS-DO-02"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-DO-02"
     strength: 8
     remarks: "Contributing Guidelines for Issues Documented"
   assessments:
     - requirement:
-        reference-id: "OSPS-DO-02"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-DO-02.01"
         strength: 8
         remarks: "Contributing Guidelines for Issue Reporting Documented"
@@ -377,13 +377,13 @@ plans:
             meets the baseline requirement.
           documentation: "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"
 - control:
-    reference-id: "OSPS-DO-03"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-DO-03"
     strength: 8
     remarks: "Security Assessment of Released Software Authenticity Validation"
   assessments:
     - requirement:
-        reference-id: "OSPS-DO-03"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-DO-03.01"
         strength: 8
         remarks: "Released Software Includes Documentation of Authentic Expected Outcomes"
@@ -397,7 +397,7 @@ plans:
             meets the baseline requirement.
           documentation: "https://docs.github.com/en/contributing/style-guide-and-content-model/quickstart-content-type"
     - requirement:
-        reference-id: "OSPS-DO-03"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-DO-03.02"
         strength: 8
         remarks: "Released Software Includes Documentation of Required Signing Commits"
@@ -411,13 +411,13 @@ plans:
             meets the baseline requirement.
           documentation: "https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits"
 - control:
-    reference-id: "OSPS-DO-04"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-DO-04"
     strength: 8
     remarks: "Project Documentation of Support Lifecycle Requirement"
   assessments:
     - requirement:
-        reference-id: "OSPS-DO-04"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-DO-04.01"
         strength: 8
         remarks: "Project Documentation of Release Lifecycle Management Support"
@@ -431,13 +431,13 @@ plans:
             meets the baseline requirement.
           documentation: "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository"
 - control:
-    reference-id: "OSPS-DO-05"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-DO-05"
     strength: 8
     remarks: "Documentation of Security Vulnerability Management"
   assessments:
     - requirement:
-        reference-id: "OSPS-DO-05"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-DO-05.01"
         strength: 8
         remarks: "Project Documentation of Security Vulnerability Management in SUPPORT.md"
@@ -451,13 +451,13 @@ plans:
             meets the baseline requirement.
           documentation: "https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax"
 - control:
-    reference-id: "OSPS-DO-06"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-DO-06"
     strength: 8
     remarks: "Security Assessment of Project Documenting Dependency Tracking"
   assessments:
     - requirement:
-        reference-id: "OSPS-DO-06"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-DO-06.01"
         strength: 8
         remarks: "Dependency Management Documentation Requirement"
@@ -472,13 +472,13 @@ plans:
             should be enabled for viewing project dependencies.
           documentation: "https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/exploring-the-dependencies-of-a-repository"
 - control:
-    reference-id: "OSPS-GV-01"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-GV-01"
     strength: 8
     remarks: "Security Assessment of Project Documenting Roles and Responsibilities"
   assessments:
     - requirement:
-        reference-id: "OSPS-GV-01"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-GV-01.01"
         strength: 8
         remarks: "Project Roles and Responsibilities Documented"
@@ -492,7 +492,7 @@ plans:
            meets the baseline requirement.
          documentation: "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"
     - requirement:
-        reference-id: "OSPS-GV-01"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-GV-01.02"
         strength: 8
         remarks: "Project Roles and Responsibilities Documented in Policy"
@@ -506,13 +506,13 @@ plans:
             meets the baseline requirement.
           documentation: "https://github.com/ossf/project-template/blob/main/GOVERNANCE.md"
 - control:
-    reference-id: "OSPS-GV-02"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-GV-02"
     strength: 8
     remarks: "Security Assessment of Project Community Governance"
   assessments:
     - requirement:
-        reference-id: "OSPS-GV-02"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-GV-02.01"
         strength: 8
         remarks: "Project Community Guidelines Documented"
@@ -526,13 +526,13 @@ plans:
             the outcome meets the baseline requirement.
           documentation: "https://www.linuxfoundation.org/resources/open-source-guides/starting-an-open-source-project"
 - control:
-    reference-id: "OSPS-GV-03"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-GV-03"
     strength: 8
     remarks: "Security Assessment of Project Contribution Guidelines"
   assessments:
     - requirement:
-        reference-id: "OSPS-GV-03"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-GV-03.01"
         strength: 8
         remarks: "Project Contributor Guidelines Documented"
@@ -546,7 +546,7 @@ plans:
             the outcome meets the baseline requirement.
           documentation: "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"
     - requirement:
-        reference-id: "OSPS-GV-03"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-GV-03.02"
         strength: 8
         remarks: "Acceptable Contribution Guidelines Documented"
@@ -560,13 +560,13 @@ plans:
             the outcome meets the baseline requirement.
           documentation: "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"
 - control:
-    reference-id: "OSPS-GV-04"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-GV-04"
     strength: 8
     remarks: "Security Assessment of Contributor Privileges"
   assessments:
     - requirement:
-        reference-id: "OSPS-GV-04"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-GV-04.01"
         strength: 8
         remarks: "Project Contributor Privilege Guidelines Documented"
@@ -583,13 +583,13 @@ plans:
             based on the type and frequency of contributions.
           documentation: "https://opensource.guide/leadership-and-governance/"
 - control:
-    reference-id: "OSPS-LE-01"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-LE-01"
     strength: 8
     remarks: "Security Assessment for Legal Open Source Compliance"
   assessments:
     - requirement:
-        reference-id: "OSPS-LE-01"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-LE-01.01"
         strength: 8
         remarks: "Contributors Signing Legal Agreement Requirement"
@@ -604,13 +604,13 @@ plans:
             to enable contributors to sign the agreement.
           documentation: "https://github.com/cla-assistant/cla-assistant"
 - control:
-    reference-id: "OSPS-LE-02"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-LE-02"
     strength: 8
     remarks: "Security Assessment for Open Source License Compliance"
   assessments:
     - requirement:
-        reference-id: "OSPS-LE-02"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-LE-02.01"
         strength: 8
         remarks: "License MUST conform to OSI Open Source or FSF Definition"
@@ -624,7 +624,7 @@ plans:
             the baseline requirement.
           documentation: "https://opensource.org/licenses"
     - requirement:
-        reference-id: "OSPS-LE-02"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-LE-02.02"
         strength: 8
         remarks: "Released Software License Conformance to OSI or FSF Definition"
@@ -638,13 +638,13 @@ plans:
             ensure the outcome meets the baseline requirement.
           documentation: "https://opensource.org/licenses"
 - control:
-    reference-id: "OSPS-LE-03"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-LE-03"
     strength: 8
     remarks: "Security Assessment for Appropriate Licensed Software Distribution"
   assessments:
     - requirement:
-        reference-id: "OSPS-LE-03"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-LE-03.01"
         strength: 8
         remarks: "Source Code License Maintenance Requirement"
@@ -659,7 +659,7 @@ plans:
             includes the required LICENSE file.
           documentation: "https://opensource.org/licenses"
     - requirement:
-        reference-id: "OSPS-LE-03"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-LE-03.02"
         strength: 8
         remarks: "Released Source Code License Maintenance Requirement"
@@ -674,13 +674,13 @@ plans:
             code includes the required LICENSE file.
           documentation: "https://opensource.org/licenses"
 - control:
-    reference-id: "OSPS-SA-01"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-SA-01"
     strength: 8
     remarks: "Security Assessment for Design Documentation of Released Software"
   assessments:
     - requirement:
-        reference-id: "OSPS-SA-01"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-SA-01.01"
         strength: 8
         remarks: "Design Documentation Validation Requirement"
@@ -694,13 +694,13 @@ plans:
             to ensure the outcome meets the baseline requirement.
           documentation: "https://github.com/marketplace/actions/openapi-analyzer"
 - control:
-    reference-id: "OSPS-SA-02"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-SA-02"
     strength: 8
     remarks: "Security Assessment for External API Documentation"
   assessments:
     - requirement:
-        reference-id: "OSPS-SA-02"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-SA-02.01"
         strength: 8
         remarks: "Project API Documentation Validation Requirement"
@@ -715,13 +715,13 @@ plans:
             interfaces (APIs) are documented for interaction and expected output.
           documentation: "https://github.com/marketplace/actions/openapi-analyzer"
 - control:
-    reference-id: "OSPS-SA-03"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-SA-03"
     strength: 9
     remarks: "Security Assessment for Code Analysis and Threat Modeling"
   assessments:
     - requirement:
-        reference-id: "OSPS-SA-03"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-SA-03.01"
         strength: 9
         remarks: "CodeQL Analysis Validation Requirement"
@@ -736,7 +736,7 @@ plans:
             file.
           documentation: "https://codeql.github.com/docs/"
     - requirement:
-        reference-id: "OSPS-SA-03"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-SA-03.02"
         strength: 9
         remarks: "Threat Modeling and Analysis Requirement"
@@ -758,13 +758,13 @@ plans:
             meets the baseline requirement.
           documentation: "https://github.com/semgrep/semgrep"
 - control:
-    reference-id: "OSPS-QA-04"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-QA-04"
     strength: 7
     remarks: "Quality Assurance for Subproject Management"
   assessments:
     - requirement:
-        reference-id: "OSPS-QA-04"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-QA-04.01"
         strength: 7
         remarks: "Subproject Health Monitoring Requirement"
@@ -780,7 +780,7 @@ plans:
             badges in the README.md file.
           documentation: "https://docs.github.com/en/actions/how-tos/monitor-workflows/add-a-status-badge"
     - requirement:
-        reference-id: "OSPS-QA-04"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-QA-04.02"
         strength: 7
         remarks: "Subproject Strictness Configuration Requirement"
@@ -795,13 +795,13 @@ plans:
             defined in the subproject's .github/settings.yml file.
           documentation: "https://resources.github.com/learn/pathways/administration-governance/essentials/configure-github-enterprise-cloud-enterprise-settings-policies/"
 - control:
-    reference-id: "OSPS-QA-05"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-QA-05"
     strength: 8
     remarks: "Quality Assurance for Source Control Management"
   assessments:
     - requirement:
-        reference-id: "OSPS-QA-05"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-QA-05.01"
         strength: 8
         remarks: "Generated Artifacts Management Requirement"
@@ -817,7 +817,7 @@ plans:
             artifacts in the source control.
           documentation: "https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files"
     - requirement:
-        reference-id: "OSPS-QA-05"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-QA-05.02"
         strength: 8
         remarks: "Binary File Management Requirement"
@@ -833,13 +833,13 @@ plans:
             binaries in the source control.
           documentation: "https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files"
 - control:
-    reference-id: "OSPS-QA-06"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-QA-06"
     strength: 9
     remarks: "Quality Assurance for Testing and Coverage"
   assessments:
     - requirement:
-        reference-id: "OSPS-QA-06"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-QA-06.01"
         strength: 9
         remarks: "Test Coverage Validation Requirement"
@@ -853,7 +853,7 @@ plans:
             meets the baseline requirement.
           documentation: "https://docs.sonarqube.org/latest/"
     - requirement:
-        reference-id: "OSPS-QA-06"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-QA-06.02"
         strength: 8
         remarks: "Testing Procedures Validation Requirement"
@@ -867,7 +867,7 @@ plans:
             the outcome meets the baseline requirement.
           documentation: "https://swagger.io/specification/"
     - requirement:
-        reference-id: "OSPS-QA-06"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-QA-06.03"
         strength: 8
         remarks: "Breaking Changes Validation Requirement"
@@ -881,13 +881,13 @@ plans:
             the outcome meets the baseline requirement.
           documentation: "https://github.com/oasdiff/oasdiff"
 - control:
-    reference-id: "OSPS-QA-07"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-QA-07"
     strength: 9
     remarks: "Quality Assurance for Advanced Branch Protection"
   assessments:
     - requirement:
-        reference-id: "OSPS-QA-07"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-QA-07.01"
         strength: 9
         remarks: "Advanced Branch Protection Validation Requirement"
@@ -901,13 +901,13 @@ plans:
             meets the baseline requirement.
           documentation: "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches"
 - control:
-    reference-id: "OSPS-VM-01"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-VM-01"
     strength: 9
     remarks: "Security Assessment for Reporting and Addressing Vulnerabilities"
   assessments:
     - requirement:
-        reference-id: "OSPS-VM-01"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-VM-01.01"
         strength: 9
         remarks: "Security Vulnerability Disclosure Policy Validation Requirement"
@@ -921,13 +921,13 @@ plans:
             ensure the outcome meets the baseline requirement.
           documentation: "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository"
 - control:
-    reference-id: "OSPS-VM-02"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-VM-02"
     strength: 9
     remarks: "Security Assessment for Published Process and Contacts for Escalated Vulnerabilities"
   assessments:
     - requirement:
-        reference-id: "OSPS-VM-02"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-VM-02.01"
         strength: 9
         remarks: "Security Vulnerability Escalation Contacts Documented Requirement"
@@ -941,13 +941,13 @@ plans:
             ensure the outcome meets the baseline requirement.
           documentation: "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file"
 - control:
-    reference-id: "OSPS-VM-03"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-VM-03"
     strength: 9
     remarks: "Security Assessment for Timely Reporting of Private Security Vulnerabilities"
   assessments:
     - requirement:
-        reference-id: "OSPS-VM-03"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-VM-03.01"
         strength: 9
         remarks: "Private Vulnerability Reporting Process for Security Researchers"
@@ -961,13 +961,13 @@ plans:
             ensure the outcome meets the baseline requirement.
           documentation: "https://github.com/github/codeql-action"
 - control:
-    reference-id: "OSPS-VM-04"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-VM-04"
     strength: 9
     remarks: "Security Assessment for Validation of Project Consumer Awareness of Known Vulnerabilities"
   assessments:
     - requirement:
-        reference-id: "OSPS-VM-04"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-VM-04.01"
         strength: 9
         remarks: "Discovered Vulnerability Disclosure Policy Validation Requirement"
@@ -981,7 +981,7 @@ plans:
             meets the baseline requirement.
           documentation: "https://docs.github.com/en/code-security/code-scanning/managing-your-code-scanning-configuration/about-the-tool-status-page"
     - requirement:
-        reference-id: "OSPS-VM-04"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-VM-04.02"
         strength: 9
         remarks: "VEX Validation Requirement for Known Vulnerabilities"
@@ -995,13 +995,13 @@ plans:
             the baseline requirement.
           documentation: "https://github.com/openvex"
 - control:
-    reference-id: "OSPS-VM-05"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-VM-05"
     strength: 9
     remarks: "Security Assessment for SCA Remediation Threshold for Findings and Vulnerabilities"
   assessments:
     - requirement:
-        reference-id: "OSPS-VM-05"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-VM-05.01"
         strength: 9
         remarks: "Defined Threshold for SCA Findings and Vulnerabilities in Policy"
@@ -1015,7 +1015,7 @@ plans:
             outcome meets the baseline requirement.
           documentation: "https://docs.github.com/en/code-security/dependabot/dependabot-alerts/configuring-dependabot-alerts"
     - requirement:
-        reference-id: "OSPS-VM-05"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-VM-05.02"
         strength: 9
         remarks: "Defined Policy Addressing SCA Findings Pre-release"
@@ -1029,7 +1029,7 @@ plans:
             outcome meets the baseline requirement.
           documentation: "https://www.sonatype.com/"
     - requirement:
-        reference-id: "OSPS-VM-05"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-VM-05.03"
         strength: 9
         remarks: "Status Check for SCA Findings and Vulnerabilities Enforced in Policy"
@@ -1043,13 +1043,13 @@ plans:
             the outcome meets the baseline requirement.
           documentation: "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks"
 - control:
-    reference-id: "OSPS-VM-06"
+    reference-id: "OSPS-B"
     entry-id: "OSPS-VM-06"
     strength: 9
     remarks: "Security Assessment for SCA Remediation Threshold for Findings and Vulnerabilities"
   assessments:
     - requirement:
-        reference-id: "OSPS-VM-06"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-VM-06.01"
         strength: 9
         remarks: "SAST Findings Threshold Defined Requirement"
@@ -1063,7 +1063,7 @@ plans:
             the outcome meets the baseline requirement.
           documentation: "https://github.com/SonarSource/sonarqube"
     - requirement:
-        reference-id: "OSPS-VM-06"
+        reference-id: "OSPS-B"
         entry-id: "OSPS-VM-06.02"
         strength: 9
         remarks: "Status Check for SAST Findings Enforced in Policy"
