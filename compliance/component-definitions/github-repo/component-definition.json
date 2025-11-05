@@ -16544,7 +16544,7 @@
       "name": "Check_Id",
       "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
       "remarks": "rule_set_2",
-      "value": "pull_request_protection_validation"
+      "value": "github_branch_protection"
      },
      {
       "name": "Check_Description",
