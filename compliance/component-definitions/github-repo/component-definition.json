@@ -983,19 +983,6 @@
       "uuid": "d2617169-182f-40af-9764-6009a01d73f0"
      },
      {
-      "description": "ISO/IEC 18974 helps organizations check open source for known security vulnerability issues like CVEs, GitHub dependency alerts or package manager alerts. ISO/IEC 18974 identifies: The key places to have security processes, How to assign roles and responsibilities, And how to ensure sustainability of the processes. ISO/IEC 18974 is lightweight, easy to read and is supported by our global community with free reference material and conformance resources.",
-      "implemented-requirements": null,
-      "props": [
-       {
-        "name": "Framework_Short_Name",
-        "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
-        "value": "OC"
-       }
-      ],
-      "source": "https://openchainproject.org/security-assurance",
-      "uuid": "b641f730-5a81-4e4c-9113-f45ccae8ce2b"
-     },
-     {
       "description": "The mission of OWASP Software Assurance Maturity Model (SAMM) is to be the prime maturity model for software assurance that provides an effective and measurable way for all types of organizations to analyze and improve their software security posture. OWASP SAMM supports the complete software lifecycle, including development and acquisition, and is technology and process agnostic. It is intentionally built to be evolutive and risk-driven in nature.",
       "implemented-requirements": [
        {
@@ -9336,19 +9323,6 @@
       ],
       "source": "https://csrc.nist.gov/pubs/sp/800/218/final",
       "uuid": "da6332d6-859f-436e-b549-41aff5a942eb"
-     },
-     {
-      "description": "OpenCRE stands for Open Common Requirement enumeration. It is an interactive content linking platform for uniting security standards and guidelines. It offers easy and robust access to relevant information when designing, developing, testing and procuring secure software.",
-      "implemented-requirements": null,
-      "props": [
-       {
-        "name": "Framework_Short_Name",
-        "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
-        "value": "OCRE"
-       }
-      ],
-      "source": "https://github.com/OWASP/OpenCRE",
-      "uuid": "e3c54f86-774c-41fc-9e9f-ec71b696c159"
      },
      {
       "description": "SLSA (pronounced \"salsa\") is a security framework from source to service, giving anyone working with software a common language for increasing levels of software security and supply chain integrity. It’s how you get from safe enough to being as resilient as possible, at any link in the chain.",
