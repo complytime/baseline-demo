@@ -74,7 +74,7 @@ plans:
         strength: 8
         remarks: "Primary Branch Protection Requirements"
       procedures:
-        - id: "pull_request_protection_validation"
+        - id: "github_branch_protection"
           name: "Pull Request Protection Validation for Primary Branch"
           description: |
             The procedure performs an automated check of the push access to
