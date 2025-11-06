@@ -11,6 +11,8 @@ The goal is to provide consistency for reporting and evidence traceability while
 
 # Demo
 
+![baseline-demo-diagram.png](baseline-demo-diagram.png)
+
 To goal of this repository is to demonstrate the evaluation and reporting of a single component, in this case a GitHub Repository. 
 
 The `Generate ""lowercase" policy` workflow can be run which will complete the following steps:
