@@ -54,7 +54,7 @@ jobs:
       - name: Generate policy bundle
         run: c2pcli oscal2policy -c configs/c2p-config.yaml -n "${FRAMEWORK}" -p $(go env GOPATH)/bin
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: policy
           path: policy.yaml
