@@ -6,33 +6,36 @@ Before you start contributing, please take a moment to read through this guide. 
 
 ## Developer Guide
 
-The goal is to add a new policy to evaluate a control. This process involves two main steps: updating compliance artifacts in the `src` directory and then writing the corresponding Rego policy in the `policy-templates` directory.
+The goal is to add a new policy to evaluate a control. This process involves two main steps: updating compliance artifacts in the `governance` directory and then writing the corresponding Rego policy in the `checks` directory.
 
 ### Step 1: Update Compliance Artifacts
 
-* **`src`**: This directory contains compliance-as-code artifacts written in `gemara`.
+* **`governance`**: This directory contains compliance-as-code artifacts written in `gemara`.
 
     * To add a new evaluation or control, first update the catalog under `catalogs` with the new control.
     * Then, navigate to `plans` and find the corresponding evaluation plan. Add a new control and procedures for each requirement.
 
   When translated into an OSCAL Component Definition, the `gemara` requirement ID and description become the **Rule**, and the procedure ID and description become the **Check**.
 
-  If you only add new policies under `policy-templates` and do not update these `gemara` artifacts, your policy will not be copied to the final bundle.
+  If you only add new policies under `checks` and do not update these `gemara` artifacts, your policy will not be copied to the final bundle.
 
 ### Step 2: Write New Policies
 
-* **`policy-templates`**: This directory contains the Rego policies that are used by Conforma.
+* **`checks`**: This directory contains the Rego policies that are used by Conforma.
 
-  Once your compliance-as-code artifacts are updated, it's time to write the corresponding policies. Create a new directory within `policy-templates` using the `Check` or assessment procedure ID. Place your Rego policies inside this new directory.
+  Once your compliance-as-code artifacts are updated, it's time to write the corresponding policies. Create a new directory within `checks` using the policy-engine name (e.g. opa) and a subdirectory using the `Check` or assessment procedure ID. Place your Rego policies inside this new directory (`policy-engine/check-id`).
 
   **Example Directory Structure:**
 
     ```
-    policy-templates/
-    ├── my_check_id
-    │   ├── my_check_id.rego
-    │   └── my_check_id_helper.rego
+  
+    checks/
+    ├── my-policy-engine
+    │ └── my_check_id
+    │     ├── my_check_id.rego
+    │     └── my_check_id_helper.rego
     └── policy.yaml
+  
     ```
 
 * **`policy.yaml`**: This configuration file is used by Conforma to link your inputs to specific policies.
