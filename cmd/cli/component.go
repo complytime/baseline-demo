@@ -42,26 +42,14 @@ func NewComponentCommand() *cobra.Command {
 
 			builder = builder.AddTargetComponent(targetComponent, componentType, layer2Catalog, parameters)
 
-			err = filepath.Walk(evaluationsPath, func(path string, info os.FileInfo, err error) error {
+			cleanedPath = filepath.Clean(evaluationsPath)
 
-				if info.IsDir() {
-					return nil
-				}
+			var plan layer4.EvaluationPlan
+			if err := plan.LoadFile(fmt.Sprintf("file://%s", cleanedPath)); err != nil {
+				return err
+			}
 
-				content, err := os.ReadFile(path)
-				if err != nil {
-					return err
-				}
-
-				var plan layer4.EvaluationPlan
-				err = yaml.Unmarshal(content, &plan)
-				if err != nil {
-					return err
-				}
-
-				builder = builder.AddValidationComponent(plan)
-				return nil
-			})
+			builder = builder.AddValidationComponent(plan)
 
 			compDef := builder.Build()
 
@@ -79,7 +67,7 @@ func NewComponentCommand() *cobra.Command {
 
 	flags := command.Flags()
 	flags.StringVarP(&catalogPath, "catalog-path", "c", "./governance/catalogs/osps.yml", "Path to L2 catalog to transform")
-	flags.StringVarP(&evaluationsPath, "evaluations-path", "e", "./governance/plans", "Path to Layer 4 evaluation plans")
+	flags.StringVarP(&evaluationsPath, "evaluations-path", "e", "./governance/plans/osps.yml", "Path to Layer 4 evaluation plan")
 	flags.StringVarP(&targetComponent, "target-component", "t", "", "Title for target component for evaluation")
 	flags.StringVar(&componentType, "component-type", "software", "Component type (based on valid OSCAL component types)")
 	flags.StringVarP(&parametersPath, "parameters-path", "p", "./governance/parameters.yaml", "Path to policy parameters")
