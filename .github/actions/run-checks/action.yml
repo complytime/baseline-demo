@@ -4,9 +4,6 @@ description: "Run directory checks in the GitHub Repository"
 runs:
   using: "composite"
   steps:
-    - name: Setup snappy
-      uses: carabiner-dev/actions/install/snappy@e1c6f772cc46a2dce1def4b8a1545249b3af757e
-
     - name: Setup OPA
       uses: open-policy-agent/setup-opa@v2
       with:
@@ -15,13 +12,23 @@ runs:
     - name: Setup ORAS CLI
       uses: oras-project/setup-oras@8d34698a59f5ffe24821f0b48ab62a3de8b64b20 # v1.2.3
 
-    - name: Retrieve data
+    - name: Retrieve OpenSSF Scorecard data
       env:
         GITHUB_TOKEN: ${{ github.token }}
         ORG: ${{ github.event.repository.owner.login }}
         REPO: ${{ github.event.repository.name }}
       run: |
-        snappy snap builtin:github/branch-rules.yaml -v ORG="$ORG" -v REPO="$REPO" -v BRANCH='main' > input.json
+        # Download scorecard binary
+        curl -sLO https://github.com/ossf/scorecard/releases/latest/download/scorecard_linux_amd64
+        chmod +x scorecard_linux_amd64
+        
+        # Run scorecard and output JSON
+        ./scorecard_linux_amd64 --repo="$ORG/$REPO" --format=json --show-details > input.json || true
+        
+        # If scorecard fails or returns empty, create a minimal structure
+        if [ ! -s input.json ]; then
+          echo '{"repo":{"name":"'"$ORG/$REPO"'"},"date":"","score":0,"checks":[]}' > input.json
+        fi
       shell: bash
 
     - name: Login to GitHub Container Registry
@@ -37,10 +44,41 @@ runs:
         curl -sLO https://github.com/conforma/cli/releases/download/snapshot/ec_linux_amd64
         chmod +x ec_linux_amd64
         
-    - name: Run EC Validate
-      id: ec_validate
+    - name: Setup yq for policy filtering
+      shell: bash
+      run: |
+        # Install yq for YAML manipulation
+        curl -sL https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -o yq
+        chmod +x yq
+        sudo mv yq /usr/local/bin/ || mv yq /usr/local/bin/
+        
+    - name: Run EC Validate for github_branch_protection
+      id: ec_validate_branch_protection
       continue-on-error: true
       shell: bash
       run: |
-        ./ec_linux_amd64 validate input --policy "policy.yaml" --file input.json --output json=policy-results/opa/github_branch_protection.json
+        # Generate filtered policy file for github_branch_protection from main policy.yaml
+        # This extracts only the source entry that includes github_branch_protection
+        yq eval '
+          .description = .description |
+          .name = .name |
+          .sources = [.sources[] | select(.config.include[] == "github_branch_protection")]
+        ' policy.yaml > policy-github_branch_protection.yaml
+        
+        ./ec_linux_amd64 validate input --policy "policy-github_branch_protection.yaml" --file input.json --output json=policy-results/opa/github_branch_protection.json
+        
+    - name: Run EC Validate for scorecard_code_review
+      id: ec_validate_code_review
+      continue-on-error: true
+      shell: bash
+      run: |
+        # Generate filtered policy file for scorecard_code_review from main policy.yaml
+        # This extracts only the source entry that includes scorecard_code_review
+        yq eval '
+          .description = .description |
+          .name = .name |
+          .sources = [.sources[] | select(.config.include[] == "scorecard_code_review")]
+        ' policy.yaml > policy-scorecard_code_review.yaml
+        
+        ./ec_linux_amd64 validate input --policy "policy-scorecard_code_review.yaml" --file input.json --output json=policy-results/opa/scorecard_code_review.json
   

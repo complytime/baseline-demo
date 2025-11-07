@@ -26,6 +26,11 @@ executors:
     type: Automated
     description: "Conforma plugin for OPA that executes Rego policies to evaluate assessment procedures"
     documentation: "https://github.com/conforma/cli"
+  - id: "conforma"
+    name: "Conforma Executor"
+    type: Automated
+    description: "Conforma executor that evaluates assessment procedures using policy engines"
+    documentation: "https://github.com/conforma/cli"
   - id: "manual-review"
     name: "Manual Security Review"
     type: Manual
@@ -94,13 +99,15 @@ plans:
         - id: "github_branch_protection"
           name: "Pull Request Protection Validation for Primary Branch"
           description: |
-            The procedure performs an automated check of the push access to
-            the primary branch in GitHub by creating a snapshot of the state 
-            from the API and checks the output with an OPA policy to ensure 
-            the outcome meets the baseline requirement.
-          documentation: "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests"
+            The procedure performs an automated check of branch protection
+            settings by evaluating an OpenSSF Scorecard JSON report. The
+            scorecard Branch-Protection check is validated against policy
+            requirements to ensure the outcome meets the baseline requirement.
+            The scorecard provides a comprehensive assessment of branch
+            protection rules including required reviews and protection status.
+          documentation: "https://github.com/ossf/scorecard/blob/main/docs/checks.md#branch-protection"
           executors:
-            - id: "opa/conforma"
+            - id: "conforma"
               role: Primary
     - requirement:
         reference-id: "OSPS-B"
@@ -1104,16 +1111,16 @@ plans:
         strength: 9
         remarks: "Advanced Branch Protection Validation Requirement"
       procedures:
-        - id: "github_branch_protection"
-          name: "GitHub API Verifications for Branch Protection"
+        - id: "scorecard_code_review"
+          name: "Code Review Validation via OpenSSF Scorecard"
           description: |
-            The procedure performs an automated check of the branch ruleset
-            state in GitHub by creating a snapshot of the state from the API
-            and checks the output with an OPA policy to ensure the outcome
-            meets the baseline requirement.
-          documentation: "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches"
+            The procedure performs an automated check of code review requirements
+            by evaluating an OpenSSF Scorecard JSON report. The scorecard Code-Review
+            check validates that pull requests are reviewed by someone other than
+            the author, ensuring proper code review practices are in place.
+          documentation: "https://github.com/ossf/scorecard/blob/main/docs/checks.md#code-review"
           executors:
-            - id: "opa/conforma"
+            - id: "conforma"
               role: Primary
 - control:
     reference-id: "OSPS-B"

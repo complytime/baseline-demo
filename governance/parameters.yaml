@@ -2,7 +2,10 @@
   - id: main_branch_min_approvals
     description: Minimum approvals on the default branch
     default: 1
+  - id: min_branch_protection_score
+    description: Minimum score threshold for OpenSSF Scorecard Branch-Protection check (0-10)
+    default: 7
 "OSPS-QA-07.01":
-  - id: main_branch_min_approvals
-    description: Minimum approvals on the default branch
-    default: 1
+  - id: min_code_review_score
+    description: Minimum score threshold for OpenSSF Scorecard Code-Review check (0-10)
+    default: 7

@@ -1,13 +1,21 @@
 description: Policy Created by C2P
 name: C2P Policy
 sources:
-- config:
-    include:
-    - github_branch_protection
-  name: OSPS-QA-07.01
-  policy:
-    - github.com/conforma/policy//policy/lib
-    - oci::ghcr.io/complytime/opa-bundle:dev
-  data: []
-  ruleData:
-    main_branch_min_approvals: "2"
+  - config:
+      include:
+        - github_branch_protection
+    name: OSPS-AC-03.01
+    policy:
+      - oci::ghcr.io/complytime/opa-bundle:dev
+      - github.com/conforma/policy//policy/lib
+    ruleData:
+      min_branch_protection_score: "7"
+  - config:
+      include:
+        - scorecard_code_review
+    name: OSPS-QA-07.01
+    policy:
+      - oci::ghcr.io/complytime/opa-bundle:dev
+      - github.com/conforma/policy//policy/lib
+    ruleData:
+      min_code_review_score: "7"

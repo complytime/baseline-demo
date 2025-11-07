@@ -15783,6 +15783,24 @@
       "value": "main_branch_min_approvals"
      },
      {
+      "name": "Parameter_Value_Default_1",
+      "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
+      "remarks": "rule_set_2",
+      "value": "7"
+     },
+     {
+      "name": "Parameter_Description_1",
+      "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
+      "remarks": "rule_set_2",
+      "value": "Minimum score threshold for OpenSSF Scorecard Branch-Protection check (0-10)"
+     },
+     {
+      "name": "Parameter_Id_1",
+      "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
+      "remarks": "rule_set_2",
+      "value": "min_branch_protection_score"
+     },
+     {
       "name": "Rule_Id",
       "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
       "remarks": "rule_set_3",
@@ -16326,19 +16344,19 @@
       "name": "Parameter_Value_Default_0",
       "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
       "remarks": "rule_set_47",
-      "value": "1"
+      "value": "7"
      },
      {
       "name": "Parameter_Description_0",
       "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
       "remarks": "rule_set_47",
-      "value": "Minimum approvals on the default branch"
+      "value": "Minimum score threshold for OpenSSF Scorecard Code-Review check (0-10)"
      },
      {
       "name": "Parameter_Id_0",
       "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
       "remarks": "rule_set_47",
-      "value": "main_branch_min_approvals"
+      "value": "min_code_review_score"
      },
      {
       "name": "Rule_Id",
@@ -16568,7 +16586,7 @@
       "name": "Check_Description",
       "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
       "remarks": "rule_set_2",
-      "value": "The procedure performs an automated check of the push access to the primary branch in GitHub by creating a snapshot of the state from the API and checks the output with an OPA policy to ensure the outcome meets the baseline requirement."
+      "value": "The procedure performs an automated check of branch protection settings by evaluating an OpenSSF Scorecard JSON report. The scorecard Branch-Protection check is validated against policy requirements to ensure the outcome meets the baseline requirement. The scorecard provides a comprehensive assessment of branch protection rules including required reviews and protection status."
      },
      {
       "name": "Rule_Id",
@@ -17372,13 +17390,13 @@
       "name": "Check_Id",
       "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
       "remarks": "rule_set_47",
-      "value": "github_branch_protection"
+      "value": "scorecard_code_review"
      },
      {
       "name": "Check_Description",
       "ns": "https://oscal-compass.github.io/compliance-trestle/schemas/oscal",
       "remarks": "rule_set_47",
-      "value": "The procedure performs an automated check of the branch ruleset state in GitHub by creating a snapshot of the state from the API and checks the output with an OPA policy to ensure the outcome meets the baseline requirement."
+      "value": "The procedure performs an automated check of code review requirements by evaluating an OpenSSF Scorecard JSON report. The scorecard Code-Review check validates that pull requests are reviewed by someone other than the author, ensuring proper code review practices are in place."
      },
      {
       "name": "Rule_Id",
