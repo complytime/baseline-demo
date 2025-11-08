@@ -12,24 +12,11 @@ runs:
     - name: Setup ORAS CLI
       uses: oras-project/setup-oras@8d34698a59f5ffe24821f0b48ab62a3de8b64b20 # v1.2.3
 
-    - name: Retrieve OpenSSF Scorecard data
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
-        ORG: ${{ github.event.repository.owner.login }}
-        REPO: ${{ github.event.repository.name }}
-      run: |
-        # Download scorecard binary
-        curl -sLO https://github.com/ossf/scorecard/releases/latest/download/scorecard_linux_amd64
-        chmod +x scorecard_linux_amd64
-        
-        # Run scorecard and output JSON
-        ./scorecard_linux_amd64 --repo="$ORG/$REPO" --format=json --show-details > input.json || true
-        
-        # If scorecard fails or returns empty, create a minimal structure
-        if [ ! -s input.json ]; then
-          echo '{"repo":{"name":"'"$ORG/$REPO"'"},"date":"","score":0,"checks":[]}' > input.json
-        fi
-      shell: bash
+    - name: "Run Analysis"
+      uses: ossf/scorecard-action@4eaacf0543bb3f2c246792bd56e8cdeffafb205a # v2.4.3
+      with:
+        results_file: input.json
+        results_format: json
 
     - name: Login to GitHub Container Registry
       uses: docker/login-action@v3
@@ -43,14 +30,6 @@ runs:
       run: |
         curl -sLO https://github.com/conforma/cli/releases/download/snapshot/ec_linux_amd64
         chmod +x ec_linux_amd64
-        
-    - name: Setup yq for policy filtering
-      shell: bash
-      run: |
-        # Install yq for YAML manipulation
-        curl -sL https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -o yq
-        chmod +x yq
-        sudo mv yq /usr/local/bin/ || mv yq /usr/local/bin/
         
     - name: Run EC Validate for github_branch_protection
       id: ec_validate_branch_protection
