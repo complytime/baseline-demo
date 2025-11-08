@@ -10,12 +10,3 @@ sources:
       - github.com/conforma/policy//policy/lib
     ruleData:
       min_branch_protection_score: "7"
-  - config:
-      include:
-        - scorecard_code_review
-    name: OSPS-QA-07.01
-    policy:
-      - oci::ghcr.io/complytime/opa-bundle:dev
-      - github.com/conforma/policy//policy/lib
-    ruleData:
-      min_code_review_score: "7"

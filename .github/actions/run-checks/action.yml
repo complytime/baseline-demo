@@ -57,14 +57,6 @@ runs:
       continue-on-error: true
       shell: bash
       run: |
-        # Generate filtered policy file for github_branch_protection from main policy.yaml
-        # This extracts only the source entry that includes github_branch_protection
-        yq eval '
-          .description = .description |
-          .name = .name |
-          .sources = [.sources[] | select(.config.include[] == "github_branch_protection")]
-        ' policy.yaml > policy-github_branch_protection.yaml
-        
         ./ec_linux_amd64 validate input --policy "policy-github_branch_protection.yaml" --file input.json --output json=policy-results/opa/github_branch_protection.json
         
     - name: Run EC Validate for scorecard_code_review
@@ -72,13 +64,5 @@ runs:
       continue-on-error: true
       shell: bash
       run: |
-        # Generate filtered policy file for scorecard_code_review from main policy.yaml
-        # This extracts only the source entry that includes scorecard_code_review
-        yq eval '
-          .description = .description |
-          .name = .name |
-          .sources = [.sources[] | select(.config.include[] == "scorecard_code_review")]
-        ' policy.yaml > policy-scorecard_code_review.yaml
-        
         ./ec_linux_amd64 validate input --policy "policy-scorecard_code_review.yaml" --file input.json --output json=policy-results/opa/scorecard_code_review.json
   

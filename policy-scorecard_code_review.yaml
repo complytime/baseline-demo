@@ -1,0 +1,12 @@
+description: Policy Created by C2P
+name: C2P Policy
+sources:
+  - config:
+      include:
+        - scorecard_code_review
+    name: OSPS-QA-07.01
+    policy:
+      - oci::ghcr.io/complytime/opa-bundle:dev
+      - github.com/conforma/policy//policy/lib
+    ruleData:
+      min_code_review_score: "7"
