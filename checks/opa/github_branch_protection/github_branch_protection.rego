@@ -5,70 +5,69 @@ import rego.v1
 
 
 # METADATA
-# title: Branch Protection Rules Present
+# title: Scorecard Data Present
 # description: >-
-#   Confirms that branch protection rules are present in the input.
+#   Confirms that OpenSSF scorecard data is present in the input.
 # custom:
-#   short_name: rules_present
-#   failure_msg: No branch protection rules found in the input.
+#   short_name: scorecard_data_present
+#   failure_msg: No OpenSSF scorecard data found in the input.
 #   solution: >-
-#     Configure at least one branch protection rule for the primary branch.
+#     Ensure that a valid OpenSSF scorecard JSON report is provided as input.
 #   collections:
 #   - osps
 deny contains result if {
-    # Check if the overall rules array exists
-    not input.values
+    not input.checks
     result := lib.result_helper(rego.metadata.chain(), [])
 }
 
 
 # METADATA
-# title: Pull Request Rule Required
+# title: Branch-Protection Check Present
 # description: >-
-#   Confirms that a branch protection rule of type 'pull_request' is present.
-#   This is a prerequisite for checking approval counts.
+#   Confirms that the Branch-Protection check is present in the scorecard report.
 # custom:
-#   short_name: pull_request_rule_required
-#   failure_msg: A branch protection rule of type 'pull_request' is required for the primary branch but was not found.
+#   short_name: branch_protection_check_present
+#   failure_msg: The Branch-Protection check was not found in the scorecard report.
 #   solution: >-
-#     Add a branch protection rule with type 'pull_request' to your branch protection settings.
+#     Ensure that the scorecard report includes the Branch-Protection check.
 #   collections:
 #   - osps
-#   - branch_protections
 #   depends_on:
-#   - github_branch_protection.rules_present
+#   - github_branch_protection.scorecard_data_present
 deny contains result if {
-    not _has_pull_request_rule
+    not _has_branch_protection_check
     result := lib.result_helper(rego.metadata.chain(), [])
 }
 
 
 # METADATA
-# title: Minimum Approvals for Main Branch
+# title: Branch-Protection Score Threshold
 # description: >-
-#   Verifies that the branch protection rule for the 'main' branch
-#   has at least the configured minimum number of required approving reviews.
+#   Verifies that the Branch-Protection check score meets or exceeds the configured minimum threshold.
 # custom:
-#   short_name: min_approvals_check
-#   failure_msg: Branch protection for 'main' requires pull request reviews but has less than the configured minimum of %v required approving reviews.
+#   short_name: branch_protection_score_threshold
+#   failure_msg: Branch-Protection check score (%v) is below the required minimum threshold of %v.
 #   solution: >-
-#     Increase the 'required_approving_review_count' in the branch protection settings to meet or exceed the policy's minimum.
+#     Improve branch protection settings to meet the minimum score threshold. Review the scorecard details for specific recommendations.
 #   collections:
 #   - osps
-#   - branch_protections
 #   depends_on:
-#   - github_branch_protection.rules_present
-#   - github_branch_protection.pull_request_rule_required
+#   - github_branch_protection.scorecard_data_present
+#   - github_branch_protection.branch_protection_check_present
 deny contains result if {
-    required_count := lib.rule_data("main_branch_min_approvals")
-    some rule in input.values
-    rule.type == "pull_request"
-    rule.parameters.required_approving_review_count < required_count
+    min_score_str := lib.rule_data("min_branch_protection_score")
+    min_score := to_number(min_score_str)
+    some check in input.checks
+    check.name == "Branch-Protection"
+    check.score  # Ensure score field exists
+    check.score < min_score
 
-    result := lib.result_helper(rego.metadata.chain(), [required_count])
+    result := lib.result_helper(rego.metadata.chain(), [check.score, min_score])
 }
 
-_has_pull_request_rule if {
-    some rule in input.values
-    rule.type == "pull_request"
+
+# Helper rule to check if branch protection check exists
+_has_branch_protection_check if {
+    some check in input.checks
+    check.name == "Branch-Protection"
 }

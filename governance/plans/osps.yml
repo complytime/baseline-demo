@@ -20,6 +20,22 @@ metadata:
         This baseline is based on the NIST SP 800-218 and the OpenSSF Best Practices
         Badge Program. The controls are organized by maturity level and category. In
         the detailed subsections you will find the control, rationale, and notes.
+executors:
+  - id: "opa/conforma"
+    name: "OPA Conforma Executor"
+    type: Automated
+    description: "Conforma plugin for OPA that executes Rego policies to evaluate assessment procedures"
+    documentation: "https://github.com/conforma/cli"
+  - id: "conforma"
+    name: "Conforma Executor"
+    type: Automated
+    description: "Conforma executor that evaluates assessment procedures using policy engines"
+    documentation: "https://github.com/conforma/cli"
+  - id: "manual-review"
+    name: "Manual Security Review"
+    type: Manual
+    description: "Human expert review of security controls, documentation quality, and compliance requirements"
+    documentation: "https://example.com/manual-review-guide"
 plans:
 - control:
     reference-id: "OSPS-B"
@@ -41,6 +57,9 @@ plans:
             API and checks the output with an OPA policy to ensure the outcome
             meets the baseline requirement.
           documentation: "https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-AC-02"
@@ -62,6 +81,9 @@ plans:
             meets the baseline requirement. The CODEOWNERS file is used for
             evaluation of roles and permissions.
           documentation: "https://docs.github.com/en/actions/reference/security/secure-use#using-codeowners-to-monitor-changes"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-AC-03"
@@ -77,11 +99,16 @@ plans:
         - id: "github_branch_protection"
           name: "Pull Request Protection Validation for Primary Branch"
           description: |
-            The procedure performs an automated check of the push access to
-            the primary branch in GitHub by creating a snapshot of the state 
-            from the API and checks the output with an OPA policy to ensure 
-            the outcome meets the baseline requirement.
-          documentation: "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests"
+            The procedure performs an automated check of branch protection
+            settings by evaluating an OpenSSF Scorecard JSON report. The
+            scorecard Branch-Protection check is validated against policy
+            requirements to ensure the outcome meets the baseline requirement.
+            The scorecard provides a comprehensive assessment of branch
+            protection rules including required reviews and protection status.
+          documentation: "https://github.com/ossf/scorecard/blob/main/docs/checks.md#branch-protection"
+          executors:
+            - id: "conforma"
+              role: Primary
     - requirement:
         reference-id: "OSPS-B"
         entry-id: "OSPS-AC-03.02"
@@ -96,6 +123,9 @@ plans:
             from the API and checks the output with an OPA policy to ensure 
             the outcome meets the baseline requirement.
           documentation: "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-AC-04"
@@ -116,6 +146,9 @@ plans:
             from the API and checks the output with an OPA policy to ensure 
             the outcome meets the baseline requirement.
           documentation: "https://docs.github.com/en/enterprise-cloud@latest/enterprise-onboarding/github-actions-for-your-enterprise/getting-started-with-github-actions-for-github-enterprise-cloud"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
     - requirement:
         reference-id: "OSPS-B"
         entry-id: "OSPS-AC-04.02"
@@ -131,6 +164,9 @@ plans:
             ensure the outcome meets the baseline requirement. Validating the
             principle of least privilege for the CI/CD pipeline permissions.
           documentation: "https://docs.github.com/en/enterprise-cloud@latest/enterprise-onboarding/github-actions-for-your-enterprise/getting-started-with-github-actions-for-github-enterprise-cloud"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-BR-01"
@@ -151,6 +187,9 @@ plans:
             API and checks the output with an OPA policy to ensure the outcome
             meets the baseline requirement.
           documentation: "https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
     - requirement:
         reference-id: "OSPS-B"
         entry-id: "OSPS-BR-01.02"
@@ -165,6 +204,9 @@ plans:
             from the API and checks the output with an OPA policy to ensure the 
             outcome meets the baseline requirement.
           documentation: "https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-BR-02"
@@ -185,6 +227,9 @@ plans:
             snapshot of the state from the API and checks the output with an
             OPA policy to ensure the outcome meets the baseline requirement.
           documentation: "https://github.com/marketplace/actions/git-semantic-version"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
     - requirement:
         reference-id: "OSPS-B"
         entry-id: "OSPS-BR-02.02"
@@ -199,6 +244,9 @@ plans:
             snapshot of the state from the API and checks the output with an
             OPA policy to ensure the outcome meets the baseline requirement.
           documentation: "https://github.com/marketplace/actions/git-semantic-version"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-BR-03"
@@ -222,6 +270,9 @@ plans:
             also leverages te GitHub App installation for API requests in 
             CI/CD pipeline authentication.
           documentation: "https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-as-a-github-app-installation"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
     - requirement:
         reference-id: "OSPS-B"
         entry-id: "OSPS-BR-03.02"
@@ -239,6 +290,9 @@ plans:
             also leverages te GitHub App installation for API requests in 
             CI/CD pipeline authentication.
           documentation: "https://docs.github.com/en/apps/creating-github-apps/authenticating-with-a-github-app/authenticating-as-a-github-app-installation"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-BR-04"
@@ -259,6 +313,9 @@ plans:
             and checks the output with an OPA policy to ensure the outcome
             meets the baseline requirement.
           documentation: "https://github.com/marketplace/actions/release-please-action"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-BR-05"
@@ -279,6 +336,9 @@ plans:
             and checks the output with an OPA policy to ensure the outcome
             meets the baseline requirement.
           documentation: "https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-BR-06"
@@ -299,6 +359,9 @@ plans:
             and checks the output with an OPA policy to ensure the outcome
             meets the baseline requirement.
           documentation: "https://github.com/marketplace/actions/release-please-manifest-action"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-BR-07"
@@ -320,6 +383,9 @@ plans:
             meets the baseline requirement. The repository will also be checked
             with pre-commit hooks for ensuring that secrets are not committed.
           documentation: "https://docs.github.com/en/get-started/git-basics/ignoring-files"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
     - requirement:
         reference-id: "OSPS-B"
         entry-id: "OSPS-BR-07.02"
@@ -336,6 +402,9 @@ plans:
             checked with pre-commit hooks for ensuring that secrets are not
             committed.
           documentation: "https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-secrets"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-DO-01"
@@ -356,6 +425,14 @@ plans:
             and checks the output with an OPA policy to ensure the outcome
             meets the baseline requirement.
           documentation: "https://github.com/marketplace/actions/yamllint-github-action"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
+            - id: "manual-review"
+              role: Primary
+          strategy:
+            conflict-rule-type: ManualOverride
+            remarks: "Manual review takes precedence for documentation quality assessment"
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-DO-02"
@@ -376,6 +453,14 @@ plans:
             API and checks the output with an OPA policy to ensure the outcome
             meets the baseline requirement.
           documentation: "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
+            - id: "manual-review"
+              role: Primary
+          strategy:
+            conflict-rule-type: ManualOverride
+            remarks: "Manual review takes precedence for documentation quality assessment"
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-DO-03"
@@ -396,6 +481,14 @@ plans:
             and checks the output with an OPA policy to ensure the outcome
             meets the baseline requirement.
           documentation: "https://docs.github.com/en/contributing/style-guide-and-content-model/quickstart-content-type"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
+            - id: "manual-review"
+              role: Primary
+          strategy:
+            conflict-rule-type: ManualOverride
+            remarks: "Manual review takes precedence for documentation quality assessment"
     - requirement:
         reference-id: "OSPS-B"
         entry-id: "OSPS-DO-03.02"
@@ -410,6 +503,9 @@ plans:
             and checks the output with an OPA policy to ensure the outcome
             meets the baseline requirement.
           documentation: "https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-DO-04"
@@ -430,6 +526,14 @@ plans:
             API and checks the output with an OPA policy to ensure the outcome
             meets the baseline requirement.
           documentation: "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
+            - id: "manual-review"
+              role: Primary
+          strategy:
+            conflict-rule-type: ManualOverride
+            remarks: "Manual review takes precedence for security policy content assessment"
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-DO-05"
@@ -450,6 +554,14 @@ plans:
             API and checks the output with an OPA policy to ensure the outcome
             meets the baseline requirement.
           documentation: "https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
+            - id: "manual-review"
+              role: Primary
+          strategy:
+            conflict-rule-type: ManualOverride
+            remarks: "Manual review takes precedence for documentation quality assessment"
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-DO-06"
@@ -471,6 +583,14 @@ plans:
             ensure the outcome meets the baseline requirement. Dependency graph
             should be enabled for viewing project dependencies.
           documentation: "https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/exploring-the-dependencies-of-a-repository"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
+            - id: "manual-review"
+              role: Primary
+          strategy:
+            conflict-rule-type: ManualOverride
+            remarks: "Manual review takes precedence for documentation quality assessment"
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-GV-01"
@@ -483,14 +603,17 @@ plans:
         strength: 8
         remarks: "Project Roles and Responsibilities Documented"
       procedures:
-       - id: "project_roles_documentation_validation"
-         name: "Project Roles and Responsibilities Documented"
-         description: |
-           The procedure performs an automated check of the project roles
-           state in GitHub by creating a snapshot of the state from the API
-           and checks the output with an OPA policy to ensure the outcome
-           meets the baseline requirement.
-         documentation: "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"
+        - id: "project_roles_documentation_validation"
+          name: "Project Roles and Responsibilities Documented"
+          description: |
+            The procedure performs an automated check of the project roles
+            state in GitHub by creating a snapshot of the state from the API
+            and checks the output with an OPA policy to ensure the outcome
+            meets the baseline requirement.
+          documentation: "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
     - requirement:
         reference-id: "OSPS-B"
         entry-id: "OSPS-GV-01.02"
@@ -505,6 +628,14 @@ plans:
             and checks the output with an OPA policy to ensure the outcome
             meets the baseline requirement.
           documentation: "https://github.com/ossf/project-template/blob/main/GOVERNANCE.md"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
+            - id: "manual-review"
+              role: Primary
+          strategy:
+            conflict-rule-type: ManualOverride
+            remarks: "Manual review takes precedence for governance documentation assessment"
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-GV-02"
@@ -525,6 +656,14 @@ plans:
             from the API and checks the output with an OPA policy to ensure
             the outcome meets the baseline requirement.
           documentation: "https://www.linuxfoundation.org/resources/open-source-guides/starting-an-open-source-project"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
+            - id: "manual-review"
+              role: Primary
+          strategy:
+            conflict-rule-type: ManualOverride
+            remarks: "Manual review takes precedence for documentation quality assessment"
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-GV-03"
@@ -545,6 +684,9 @@ plans:
             from the API and checks the output with an OPA policy to ensure
             the outcome meets the baseline requirement.
           documentation: "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
     - requirement:
         reference-id: "OSPS-B"
         entry-id: "OSPS-GV-03.02"
@@ -559,6 +701,14 @@ plans:
             from the API and checks the output with an OPA policy to ensure
             the outcome meets the baseline requirement.
           documentation: "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
+            - id: "manual-review"
+              role: Primary
+          strategy:
+            conflict-rule-type: ManualOverride
+            remarks: "Manual review takes precedence for documentation quality assessment"
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-GV-04"
@@ -582,6 +732,9 @@ plans:
             privileges. There is a formalized procedure for granting access
             based on the type and frequency of contributions.
           documentation: "https://opensource.guide/leadership-and-governance/"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-LE-01"
@@ -603,6 +756,14 @@ plans:
             meets the baseline requirement. Usage of a tool like CLA Assistant
             to enable contributors to sign the agreement.
           documentation: "https://github.com/cla-assistant/cla-assistant"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
+            - id: "manual-review"
+              role: Primary
+          strategy:
+            conflict-rule-type: ManualOverride
+            remarks: "Manual review takes precedence for legal compliance assessment"
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-LE-02"
@@ -623,6 +784,9 @@ plans:
             checks the output with an OPA policy to ensure the outcome meets
             the baseline requirement.
           documentation: "https://opensource.org/licenses"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
     - requirement:
         reference-id: "OSPS-B"
         entry-id: "OSPS-LE-02.02"
@@ -637,6 +801,14 @@ plans:
             state from the API and checks the output with an OPA policy to 
             ensure the outcome meets the baseline requirement.
           documentation: "https://opensource.org/licenses"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
+            - id: "manual-review"
+              role: Primary
+          strategy:
+            conflict-rule-type: ManualOverride
+            remarks: "Manual review takes precedence for legal compliance assessment"
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-LE-03"
@@ -658,6 +830,9 @@ plans:
             meets the baseline requirement. Ensures that the source code
             includes the required LICENSE file.
           documentation: "https://opensource.org/licenses"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
     - requirement:
         reference-id: "OSPS-B"
         entry-id: "OSPS-LE-03.02"
@@ -673,6 +848,9 @@ plans:
             meets the baseline requirement. Ensures that the released source
             code includes the required LICENSE file.
           documentation: "https://opensource.org/licenses"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-SA-01"
@@ -693,6 +871,9 @@ plans:
             the state from the API and checks the output with an OPA policy
             to ensure the outcome meets the baseline requirement.
           documentation: "https://github.com/marketplace/actions/openapi-analyzer"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-SA-02"
@@ -714,6 +895,9 @@ plans:
             the outcome meets the baseline requirement. Ensure that the software
             interfaces (APIs) are documented for interaction and expected output.
           documentation: "https://github.com/marketplace/actions/openapi-analyzer"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-SA-03"
@@ -735,6 +919,9 @@ plans:
             meets the baseline requirement. The badges are added to the README.md
             file.
           documentation: "https://codeql.github.com/docs/"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
     - requirement:
         reference-id: "OSPS-B"
         entry-id: "OSPS-SA-03.02"
@@ -749,6 +936,14 @@ plans:
             and checks the output with an OPA policy to ensure the outcome
             meets the baseline requirement.
           documentation: "https://github.com/OWASP/threat-dragon"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
+            - id: "manual-review"
+              role: Primary
+          strategy:
+            conflict-rule-type: ManualOverride
+            remarks: "Manual review takes precedence for threat modeling assessment"
         - id: "surface_analysis_validation"
           name: "Required Surface Analysis Validation in Repository"
           description: |
@@ -757,6 +952,9 @@ plans:
             and checks the output with an OPA policy to ensure the outcome
             meets the baseline requirement.
           documentation: "https://github.com/semgrep/semgrep"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-QA-04"
@@ -779,6 +977,9 @@ plans:
             The procedure also checks for the existence of the subproject
             badges in the README.md file.
           documentation: "https://docs.github.com/en/actions/how-tos/monitor-workflows/add-a-status-badge"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
     - requirement:
         reference-id: "OSPS-B"
         entry-id: "OSPS-QA-04.02"
@@ -794,6 +995,9 @@ plans:
             meets the baseline requirement. The strictness threshold is 
             defined in the subproject's .github/settings.yml file.
           documentation: "https://resources.github.com/learn/pathways/administration-governance/essentials/configure-github-enterprise-cloud-enterprise-settings-policies/"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-QA-05"
@@ -816,6 +1020,9 @@ plans:
             The procedure also checks for the existence of the generated
             artifacts in the source control.
           documentation: "https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
     - requirement:
         reference-id: "OSPS-B"
         entry-id: "OSPS-QA-05.02"
@@ -832,6 +1039,9 @@ plans:
             The procedure also checks for the existence of the unreviewable
             binaries in the source control.
           documentation: "https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-QA-06"
@@ -852,6 +1062,9 @@ plans:
             and checks the output with an OPA policy to ensure the outcome
             meets the baseline requirement.
           documentation: "https://docs.sonarqube.org/latest/"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
     - requirement:
         reference-id: "OSPS-B"
         entry-id: "OSPS-QA-06.02"
@@ -866,6 +1079,9 @@ plans:
             from the API and checks the output with an OPA policy to ensure
             the outcome meets the baseline requirement.
           documentation: "https://swagger.io/specification/"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
     - requirement:
         reference-id: "OSPS-B"
         entry-id: "OSPS-QA-06.03"
@@ -880,6 +1096,9 @@ plans:
             from the API and checks the output with an OPA policy to ensure
             the outcome meets the baseline requirement.
           documentation: "https://github.com/oasdiff/oasdiff"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-QA-07"
@@ -892,14 +1111,17 @@ plans:
         strength: 9
         remarks: "Advanced Branch Protection Validation Requirement"
       procedures:
-        - id: "github_branch_protection"
-          name: "GitHub API Verifications for Branch Protection"
+        - id: "scorecard_code_review"
+          name: "Code Review Validation via OpenSSF Scorecard"
           description: |
-            The procedure performs an automated check of the branch ruleset
-            state in GitHub by creating a snapshot of the state from the API
-            and checks the output with an OPA policy to ensure the outcome
-            meets the baseline requirement.
-          documentation: "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches"
+            The procedure performs an automated check of code review requirements
+            by evaluating an OpenSSF Scorecard JSON report. The scorecard Code-Review
+            check validates that pull requests are reviewed by someone other than
+            the author, ensuring proper code review practices are in place.
+          documentation: "https://github.com/ossf/scorecard/blob/main/docs/checks.md#code-review"
+          executors:
+            - id: "conforma"
+              role: Primary
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-VM-01"
@@ -920,6 +1142,9 @@ plans:
             state from the API and checks the output with an OPA policy to
             ensure the outcome meets the baseline requirement.
           documentation: "https://docs.github.com/en/code-security/getting-started/adding-a-security-policy-to-your-repository"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-VM-02"
@@ -940,6 +1165,14 @@ plans:
             state from the API and checks the output with an OPA policy to
             ensure the outcome meets the baseline requirement.
           documentation: "https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/creating-a-default-community-health-file"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
+            - id: "manual-review"
+              role: Primary
+          strategy:
+            conflict-rule-type: ManualOverride
+            remarks: "Manual review takes precedence for security policy content assessment"
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-VM-03"
@@ -960,6 +1193,9 @@ plans:
             state from the API and checks the output with an OPA policy to
             ensure the outcome meets the baseline requirement.
           documentation: "https://github.com/github/codeql-action"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-VM-04"
@@ -980,6 +1216,9 @@ plans:
             API and checks the output with an OPA policy to ensure the outcome
             meets the baseline requirement.
           documentation: "https://docs.github.com/en/code-security/code-scanning/managing-your-code-scanning-configuration/about-the-tool-status-page"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
     - requirement:
         reference-id: "OSPS-B"
         entry-id: "OSPS-VM-04.02"
@@ -994,6 +1233,9 @@ plans:
             checks the output with an OPA policy to ensure the outcome meets
             the baseline requirement.
           documentation: "https://github.com/openvex"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-VM-05"
@@ -1014,6 +1256,9 @@ plans:
             the API and checks the output with an OPA policy to ensure the
             outcome meets the baseline requirement.
           documentation: "https://docs.github.com/en/code-security/dependabot/dependabot-alerts/configuring-dependabot-alerts"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
     - requirement:
         reference-id: "OSPS-B"
         entry-id: "OSPS-VM-05.02"
@@ -1028,6 +1273,9 @@ plans:
             the API and checks the output with an OPA policy to ensure the
             outcome meets the baseline requirement.
           documentation: "https://www.sonatype.com/"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
     - requirement:
         reference-id: "OSPS-B"
         entry-id: "OSPS-VM-05.03"
@@ -1042,6 +1290,9 @@ plans:
             from the API and checks the output with an OPA policy to ensure
             the outcome meets the baseline requirement.
           documentation: "https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/collaborating-on-repositories-with-code-quality-features/about-status-checks"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
 - control:
     reference-id: "OSPS-B"
     entry-id: "OSPS-VM-06"
@@ -1062,6 +1313,9 @@ plans:
             from the API and checks the output with an OPA policy to ensure
             the outcome meets the baseline requirement.
           documentation: "https://github.com/SonarSource/sonarqube"
+          executors:
+            - id: "opa/conforma"
+              role: Primary
     - requirement:
         reference-id: "OSPS-B"
         entry-id: "OSPS-VM-06.02"

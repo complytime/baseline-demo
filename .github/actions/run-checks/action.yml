@@ -4,9 +4,6 @@ description: "Run directory checks in the GitHub Repository"
 runs:
   using: "composite"
   steps:
-    - name: Setup snappy
-      uses: carabiner-dev/actions/install/snappy@e1c6f772cc46a2dce1def4b8a1545249b3af757e
-
     - name: Setup OPA
       uses: open-policy-agent/setup-opa@v2
       with:
@@ -15,14 +12,11 @@ runs:
     - name: Setup ORAS CLI
       uses: oras-project/setup-oras@22ce207df3b08e061f537244349aac6ae1d214f6 # v1.2.4
 
-    - name: Retrieve data
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
-        ORG: ${{ github.event.repository.owner.login }}
-        REPO: ${{ github.event.repository.name }}
-      run: |
-        snappy snap builtin:github/branch-rules.yaml -v ORG="$ORG" -v REPO="$REPO" -v BRANCH='main' > input.json
-      shell: bash
+    - name: "Run Analysis"
+      uses: ossf/scorecard-action@4eaacf0543bb3f2c246792bd56e8cdeffafb205a # v2.4.3
+      with:
+        results_file: input.json
+        results_format: json
 
     - name: Login to GitHub Container Registry
       uses: docker/login-action@v3
@@ -37,10 +31,17 @@ runs:
         curl -sLO https://github.com/conforma/cli/releases/download/snapshot/ec_linux_amd64
         chmod +x ec_linux_amd64
         
-    - name: Run EC Validate
-      id: ec_validate
+    - name: Run EC Validate for github_branch_protection
+      id: ec_validate_branch_protection
       continue-on-error: true
       shell: bash
       run: |
-        ./ec_linux_amd64 validate input --policy "policy.yaml" --file input.json --output json=policy-results/opa/github_branch_protection.json
+        ./ec_linux_amd64 validate input --policy "policy-github_branch_protection.yaml" --file input.json --output json=policy-results/opa/github_branch_protection.json
+        
+    - name: Run EC Validate for scorecard_code_review
+      id: ec_validate_code_review
+      continue-on-error: true
+      shell: bash
+      run: |
+        ./ec_linux_amd64 validate input --policy "policy-scorecard_code_review.yaml" --file input.json --output json=policy-results/opa/scorecard_code_review.json
   
