@@ -5,7 +5,7 @@ go 1.24.4
 require (
 	github.com/complytime/gemara2oscal v0.0.0-20251027194523-4ead3ea25a6c
 	github.com/defenseunicorns/go-oscal v0.7.0
-	github.com/goccy/go-yaml v1.18.0
+	github.com/goccy/go-yaml v1.19.0
 	github.com/spf13/cobra v1.10.1
 )
 
