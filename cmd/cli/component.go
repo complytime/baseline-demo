@@ -6,7 +6,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/complytime/gemara2oscal/component"
+	"github.com/complytime-labs/gemara2oscal/component"
 	oscalTypes "github.com/defenseunicorns/go-oscal/src/types/oscal-1-1-3"
 	"github.com/goccy/go-yaml"
 	"github.com/ossf/gemara/layer2"
