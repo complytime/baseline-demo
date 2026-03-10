@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/complytime/baseline-demo/cmd/cli"
+	"github.com/complytime-labs/baseline-demo/cmd/cli"
 )
 
 func main() {
