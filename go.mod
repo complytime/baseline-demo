@@ -1,9 +1,9 @@
-module github.com/complytime/baseline-demo
+module github.com/complytime-labs/baseline-demo
 
 go 1.24.4
 
 require (
-	github.com/complytime/gemara2oscal v0.0.0-20251027194523-4ead3ea25a6c
+	github.com/complytime-labs/gemara2oscal v0.0.0-20251027194523-4ead3ea25a6c
 	github.com/defenseunicorns/go-oscal v0.7.0
 	github.com/goccy/go-yaml v1.19.2
 	github.com/spf13/cobra v1.10.2
@@ -24,6 +24,6 @@ require (
 )
 
 replace (
-	github.com/complytime/gemara2oscal => github.com/complytime/gemara2oscal v0.0.0-20251107222047-9887878c2711
+	github.com/complytime-labs/gemara2oscal => github.com/complytime-labs/gemara2oscal v0.0.0-20251107222047-9887878c2711
 	github.com/ossf/gemara => github.com/jpower432/sci v0.0.0-20251107221736-76054b25e204
 )
